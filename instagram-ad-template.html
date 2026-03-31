@@ -226,22 +226,18 @@
         .tech-grid {
             position: absolute;
             inset: 0;
-            background:
-                linear-gradient(120deg, transparent 0 80%, rgba(255, 255, 255, 0.08) 80% 81%, transparent 81%),
-                linear-gradient(165deg, transparent 0 85%, rgba(255, 255, 255, 0.06) 85% 86%, transparent 86%),
-                linear-gradient(115deg, transparent 0 88%, rgba(36, 215, 234, 0.18) 88% 89%, transparent 89%);
-            opacity: 0.9;
+            background: rgba(255, 255, 255, 0.02);
         }
 
         .network-lines {
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(var(--line-light) 1px, transparent 1px),
-                linear-gradient(90deg, var(--line-light) 1px, transparent 1px);
-            background-size: 120px 120px;
-            mask-image: linear-gradient(135deg, transparent 10%, rgba(0, 0, 0, 0.9) 40%, transparent 100%);
-            opacity: 0.38;
+                linear-gradient(rgba(16, 57, 125, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 57, 125, 0.05) 1px, transparent 1px);
+            background-size: 80px 80px;
+            mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 1) 20%, transparent 100%);
+            opacity: 0.8;
         }
 
         .brand-pill {
@@ -267,20 +263,17 @@
         }
 
         .bookmark {
-            position: absolute;
-            top: 0;
-            right: 52px;
-            width: 34px;
-            height: 92px;
-            background: linear-gradient(180deg, var(--coral-500), #ff7d5f);
-            clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
-            z-index: 4;
+            display: none;
         }
 
         .poster-content {
             position: relative;
             z-index: 2;
             height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 42px 52px;
         }
 
         .hero {
@@ -294,81 +287,30 @@
             inset: 0;
             background:
                 radial-gradient(circle at 36% 26%, rgba(255, 255, 255, 0.68), transparent 18%),
-                linear-gradient(180deg, transparent 0 45%, rgba(0, 0, 0, 0.18) 46% 100%);
-        }
-
-        .hero .skyline {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 385px;
-            height: 210px;
-            opacity: 0.95;
+                linear-gradient(180deg, transparent 0 45%, rgba(0, 0, 0, 0.05) 46% 100%);
         }
 
         .hero .skyline,
-        .hero .skyline::before,
-        .hero .skyline::after {
-            clip-path: polygon(0 100%, 0 52%, 8% 47%, 12% 39%, 18% 45%, 24% 31%, 29% 50%, 33% 43%, 38% 20%, 42% 55%, 47% 42%, 56% 36%, 61% 51%, 67% 35%, 75% 44%, 82% 31%, 88% 46%, 94% 37%, 100% 41%, 100% 100%);
-            background: linear-gradient(180deg, rgba(44, 63, 107, 0.75), rgba(15, 25, 56, 0.98));
-        }
-
-        .hero .skyline::before,
-        .hero .skyline::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            height: 100%;
-            opacity: 0.45;
-        }
-
-        .hero .skyline::before {
-            left: 4%;
-            width: 20%;
-            transform: scaleY(0.85);
-        }
-
-        .hero .skyline::after {
-            right: 6%;
-            width: 24%;
-            transform: scaleY(0.72);
-        }
-
         .hero .neon-ribbons {
-            position: absolute;
-            left: -4%;
-            right: -4%;
-            bottom: 255px;
-            height: 280px;
-            background:
-                radial-gradient(circle at 10% 92%, rgba(36, 215, 234, 0.55), transparent 12%),
-                radial-gradient(circle at 31% 90%, rgba(36, 215, 234, 0.7), transparent 14%),
-                radial-gradient(circle at 55% 88%, rgba(36, 215, 234, 0.6), transparent 13%),
-                radial-gradient(circle at 78% 91%, rgba(36, 215, 234, 0.75), transparent 14%),
-                linear-gradient(180deg, transparent 0 42%, rgba(36, 215, 234, 0.15) 100%);
-            filter: saturate(135%);
-        }
-
-        .hero .neon-ribbons::before,
-        .hero .neon-ribbons::after {
-            content: "";
-            position: absolute;
-            inset: 20px 0 0;
-            background:
-                radial-gradient(circle at 12% 74%, transparent 0 46px, rgba(36, 215, 234, 0.9) 47px 50px, transparent 52px),
-                radial-gradient(circle at 35% 80%, transparent 0 52px, rgba(36, 215, 234, 0.9) 53px 56px, transparent 58px),
-                radial-gradient(circle at 58% 82%, transparent 0 56px, rgba(36, 215, 234, 0.9) 57px 60px, transparent 62px),
-                radial-gradient(circle at 82% 80%, transparent 0 58px, rgba(36, 215, 234, 0.9) 59px 62px, transparent 64px);
-            opacity: 0.6;
+            display: none;
         }
 
         .hero-copy {
-            position: absolute;
-            inset: auto 52px 42px;
-            background: linear-gradient(180deg, rgba(5, 26, 71, 0.84), rgba(5, 22, 59, 0.96));
-            border-radius: 28px 28px 0 0;
-            padding: 34px 38px 28px;
-            min-height: 370px;
+            background: linear-gradient(180deg, rgba(5, 26, 71, 0.95), rgba(5, 22, 59, 1));
+            border-radius: 32px;
+            padding: 44px 48px;
+            width: 100%;
+            box-shadow: 0 24px 60px rgba(4, 14, 38, 0.18);
+        }
+
+        .poster.story-aspect .hero-copy {
+            padding: 64px 54px;
+            margin-bottom: 40px;
+        }
+
+        .poster.portrait-aspect .hero-copy {
+            padding: 54px 48px;
+            margin-bottom: 20px;
         }
 
         .event-mark {
@@ -389,21 +331,37 @@
         }
 
         .headline {
-            font-size: clamp(3.8rem, 7vw, 5.4rem);
+            font-size: 4.8rem;
             line-height: 0.96;
             font-weight: 900;
             color: #fff;
             margin-bottom: 18px;
             text-transform: uppercase;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.02em;
+        }
+        
+        .poster.story-aspect .headline {
+            font-size: 6.8rem;
+            margin-bottom: 32px;
+        }
+
+        .poster.portrait-aspect .headline {
+            font-size: 5.6rem;
+            margin-bottom: 24px;
         }
 
         .subheadline {
             max-width: 740px;
-            font-size: 1.08rem;
-            line-height: 1.28;
+            font-size: 1.2rem;
+            line-height: 1.35;
             color: rgba(255, 255, 255, 0.92);
             margin-bottom: 26px;
+        }
+        
+        .poster.story-aspect .subheadline {
+            font-size: 1.6rem;
+            max-width: 860px;
+            margin-bottom: 40px;
         }
 
         .hero-meta {
@@ -468,26 +426,66 @@
         .cta-inner {
             position: relative;
             z-index: 2;
-            padding: 160px 58px 54px;
+            padding: 140px 58px 54px;
             height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .poster.story-aspect .benefits-inner,
+        .poster.story-aspect .topics-inner,
+        .poster.story-aspect .cta-inner {
+            padding: 180px 80px 80px;
+        }
+        
+        .poster.portrait-aspect .benefits-inner,
+        .poster.portrait-aspect .topics-inner,
+        .poster.portrait-aspect .cta-inner {
+            padding: 160px 68px 68px;
+        }
+        
+        .cta-inner {
+            padding-bottom: 180px;
+        }
+        .poster.story-aspect .cta-inner {
+            padding-bottom: 240px;
         }
 
         .eyebrow {
-            color: #1a9eaf;
+            color: var(--navy-800);
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 0.03em;
+            letter-spacing: 0.05em;
             margin-bottom: 18px;
+            font-size: 1.1rem;
+        }
+        
+        .poster.story-aspect .eyebrow {
+            font-size: 1.4rem;
+            margin-bottom: 26px;
         }
 
         .dark-title,
         .light-title {
-            font-size: clamp(3.3rem, 6vw, 4.55rem);
+            font-size: 4.2rem;
             line-height: 0.98;
             text-transform: uppercase;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.02em;
             font-weight: 900;
             margin-bottom: 14px;
+        }
+        
+        .poster.story-aspect .dark-title,
+        .poster.story-aspect .light-title {
+            font-size: 5.8rem;
+            margin-bottom: 24px;
+        }
+        
+        .poster.portrait-aspect .dark-title,
+        .poster.portrait-aspect .light-title {
+            font-size: 5rem;
+            margin-bottom: 20px;
         }
 
         .dark-title {
@@ -495,7 +493,7 @@
         }
 
         .light-title {
-            color: var(--cyan-500);
+            color: rgba(255, 255, 255, 0.95);
         }
 
         .lead {
@@ -523,9 +521,9 @@
             border-radius: 50%;
             display: grid;
             place-items: center;
-            color: var(--cyan-500);
-            border: 2px solid rgba(36, 215, 234, 0.4);
-            background: rgba(36, 215, 234, 0.08);
+            color: var(--navy-800);
+            border: 2px solid rgba(16, 57, 125, 0.2);
+            background: rgba(16, 57, 125, 0.04);
             font-size: 1.1rem;
             font-weight: 900;
         }
@@ -533,7 +531,7 @@
         .benefit-item strong {
             display: block;
             color: var(--navy-900);
-            font-size: 1.02rem;
+            font-size: 1.2rem;
             font-weight: 900;
             text-transform: uppercase;
         }
@@ -542,9 +540,14 @@
             display: block;
             margin-top: 4px;
             color: rgba(21, 37, 79, 0.8);
-            font-size: 0.98rem;
+            font-size: 1.1rem;
             line-height: 1.35;
         }
+
+        .poster.story-aspect .benefit-item strong { font-size: 1.6rem; }
+        .poster.story-aspect .benefit-item span { font-size: 1.4rem; }
+        .poster.story-aspect .icon-circle { width: 72px; height: 72px; font-size: 1.4rem; }
+        .poster.story-aspect .benefit-item { grid-template-columns: 80px 1fr; gap: 24px; margin-bottom: 20px;}
 
         .bottom-mark {
             position: absolute;
@@ -570,7 +573,7 @@
         }
 
         .topics .eyebrow {
-            color: #dffcff;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .topics-sub {
@@ -794,7 +797,7 @@
     <div class="app-shell">
         <aside class="controls">
             <h1>Plantilla Instagram 20CCC</h1>
-            <p>La composición replica la estética de la referencia: fondo azul profundo, cian neón, acento coral, geometría tech y el logo oficial del evento.</p>
+            <p>Plantilla institucional dinámica: adaptativa a formatos 1:1, 4:5 y 9:16. Usa colores limpios, alineación centrada y diseño académico sobrio.</p>
 
             <fieldset class="field">
                 <legend>Formato</legend>
