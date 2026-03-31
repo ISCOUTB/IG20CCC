@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20CCC Instagram Ad Template</title>
+    <style>
+        :root {
+            --navy-950: #041a47;
+            --navy-900: #08265f;
+            --navy-800: #10397d;
+            --cyan-500: #24d7ea;
+            --cyan-300: #8cf4ff;
+            --coral-500: #ff6f52;
+            --coral-300: #ff9c7d;
+            --ink-900: #15254f;
+            --sand-100: #fff8f1;
+            --paper: #ffffff;
+            --line-light: rgba(36, 215, 234, 0.22);
+            --shadow-soft: 0 24px 60px rgba(4, 14, 38, 0.18);
+            --radius-xl: 32px;
+            --radius-lg: 24px;
+            --radius-md: 18px;
+            --frame: 1080px;
+            --ui-font: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: var(--ui-font);
+            color: var(--ink-900);
+            background:
+                radial-gradient(circle at top, rgba(36, 215, 234, 0.18), transparent 26%),
+                linear-gradient(180deg, #f4f7fb 0%, #dde7f4 100%);
+        }
+
+        .app-shell {
+            width: min(1500px, calc(100% - 32px));
+            margin: 24px auto 40px;
+            display: grid;
+            grid-template-columns: 360px minmax(0, 1fr);
+            gap: 24px;
+            align-items: start;
+        }
+
+        .controls {
+            position: sticky;
+            top: 20px;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(16, 57, 125, 0.1);
+            border-radius: 28px;
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: blur(18px);
+            padding: 24px;
+        }
+
+        .controls h1 {
+            font-size: 1.8rem;
+            line-height: 1.05;
+            color: var(--navy-900);
+            margin-bottom: 10px;
+        }
+
+        .controls p {
+            font-size: 0.96rem;
+            line-height: 1.45;
+            color: rgba(21, 37, 79, 0.74);
+            margin-bottom: 18px;
+        }
+
+        .note {
+            border-left: 4px solid var(--cyan-500);
+            background: rgba(36, 215, 234, 0.08);
+            border-radius: 16px;
+            padding: 12px 14px;
+            margin-bottom: 18px;
+            font-size: 0.92rem;
+            line-height: 1.45;
+        }
+
+        .tab-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            border: 0;
+            border-radius: 999px;
+            padding: 10px 14px;
+            background: rgba(16, 57, 125, 0.08);
+            color: var(--navy-900);
+            font-weight: 700;
+            cursor: pointer;
+            transition: 180ms ease;
+        }
+
+        .tab-button.active,
+        .tab-button:hover {
+            background: var(--navy-900);
+            color: #fff;
+        }
+
+        .form-panel {
+            display: none;
+        }
+
+        .form-panel.active {
+            display: block;
+        }
+
+        .field {
+            margin-bottom: 14px;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--navy-900);
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            border: 1px solid rgba(16, 57, 125, 0.14);
+            border-radius: 14px;
+            padding: 11px 13px;
+            font: inherit;
+            color: var(--ink-900);
+            background: #fff;
+        }
+
+        .field textarea {
+            min-height: 82px;
+            resize: vertical;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 16px;
+            padding: 8px 0;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: normal;
+        }
+
+        .preview-area {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .preview-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: center;
+            padding: 8px 4px;
+        }
+
+        .preview-head h2 {
+            font-size: 1.3rem;
+            color: var(--navy-900);
+        }
+
+        .preview-head span {
+            color: rgba(21, 37, 79, 0.68);
+            font-size: 0.92rem;
+        }
+
+        .preview-frame {
+            display: none;
+            justify-content: center;
+        }
+
+        .preview-frame.active {
+            display: flex;
+        }
+
+        .poster {
+            width: 1080px;
+            flex-shrink: 0;
+            aspect-ratio: 1 / 1;
+            position: relative;
+            overflow: hidden;
+            border-radius: 34px;
+            box-shadow: 0 34px 80px rgba(9, 20, 55, 0.28);
+            background: var(--paper);
+        }
+
+        .poster.portrait-aspect {
+            aspect-ratio: 4 / 5;
+        }
+
+        .poster.story-aspect {
+            aspect-ratio: 9 / 16;
+        }
+
+        .poster::before,
+        .poster::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .poster::before {
+            background:
+                linear-gradient(140deg, transparent 0 76%, rgba(36, 215, 234, 0.08) 100%),
+                linear-gradient(45deg, rgba(255, 255, 255, 0.04), transparent 35%);
+        }
+
+        .tech-grid {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(120deg, transparent 0 80%, rgba(255, 255, 255, 0.08) 80% 81%, transparent 81%),
+                linear-gradient(165deg, transparent 0 85%, rgba(255, 255, 255, 0.06) 85% 86%, transparent 86%),
+                linear-gradient(115deg, transparent 0 88%, rgba(36, 215, 234, 0.18) 88% 89%, transparent 89%);
+            opacity: 0.9;
+        }
+
+        .network-lines {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--line-light) 1px, transparent 1px),
+                linear-gradient(90deg, var(--line-light) 1px, transparent 1px);
+            background-size: 120px 120px;
+            mask-image: linear-gradient(135deg, transparent 10%, rgba(0, 0, 0, 0.9) 40%, transparent 100%);
+            opacity: 0.38;
+        }
+
+        .brand-pill {
+            position: absolute;
+            top: 26px;
+            left: 26px;
+            min-width: 530px;
+            padding: 24px 38px 24px 32px;
+            border-radius: 0 0 32px 0;
+            background: rgba(255, 255, 255, 0.96);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            z-index: 3;
+            clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+            box-shadow: 0 16px 28px rgba(18, 31, 63, 0.12);
+        }
+
+        .brand-pill img {
+            width: 320px;
+            height: auto;
+            display: block;
+        }
+
+        .bookmark {
+            position: absolute;
+            top: 0;
+            right: 52px;
+            width: 34px;
+            height: 92px;
+            background: linear-gradient(180deg, var(--coral-500), #ff7d5f);
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+            z-index: 4;
+        }
+
+        .poster-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+        }
+
+        .hero {
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.22) 32%, rgba(4, 26, 71, 0.16) 60%, rgba(4, 26, 71, 0) 100%),
+                linear-gradient(180deg, #ffffff 0%, #f8fbff 17%, #e6eef7 32%, #14376d 62%, #06183f 100%);
+        }
+
+        .hero .city-glow {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 36% 26%, rgba(255, 255, 255, 0.68), transparent 18%),
+                linear-gradient(180deg, transparent 0 45%, rgba(0, 0, 0, 0.18) 46% 100%);
+        }
+
+        .hero .skyline {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 385px;
+            height: 210px;
+            opacity: 0.95;
+        }
+
+        .hero .skyline,
+        .hero .skyline::before,
+        .hero .skyline::after {
+            clip-path: polygon(0 100%, 0 52%, 8% 47%, 12% 39%, 18% 45%, 24% 31%, 29% 50%, 33% 43%, 38% 20%, 42% 55%, 47% 42%, 56% 36%, 61% 51%, 67% 35%, 75% 44%, 82% 31%, 88% 46%, 94% 37%, 100% 41%, 100% 100%);
+            background: linear-gradient(180deg, rgba(44, 63, 107, 0.75), rgba(15, 25, 56, 0.98));
+        }
+
+        .hero .skyline::before,
+        .hero .skyline::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            height: 100%;
+            opacity: 0.45;
+        }
+
+        .hero .skyline::before {
+            left: 4%;
+            width: 20%;
+            transform: scaleY(0.85);
+        }
+
+        .hero .skyline::after {
+            right: 6%;
+            width: 24%;
+            transform: scaleY(0.72);
+        }
+
+        .hero .neon-ribbons {
+            position: absolute;
+            left: -4%;
+            right: -4%;
+            bottom: 255px;
+            height: 280px;
+            background:
+                radial-gradient(circle at 10% 92%, rgba(36, 215, 234, 0.55), transparent 12%),
+                radial-gradient(circle at 31% 90%, rgba(36, 215, 234, 0.7), transparent 14%),
+                radial-gradient(circle at 55% 88%, rgba(36, 215, 234, 0.6), transparent 13%),
+                radial-gradient(circle at 78% 91%, rgba(36, 215, 234, 0.75), transparent 14%),
+                linear-gradient(180deg, transparent 0 42%, rgba(36, 215, 234, 0.15) 100%);
+            filter: saturate(135%);
+        }
+
+        .hero .neon-ribbons::before,
+        .hero .neon-ribbons::after {
+            content: "";
+            position: absolute;
+            inset: 20px 0 0;
+            background:
+                radial-gradient(circle at 12% 74%, transparent 0 46px, rgba(36, 215, 234, 0.9) 47px 50px, transparent 52px),
+                radial-gradient(circle at 35% 80%, transparent 0 52px, rgba(36, 215, 234, 0.9) 53px 56px, transparent 58px),
+                radial-gradient(circle at 58% 82%, transparent 0 56px, rgba(36, 215, 234, 0.9) 57px 60px, transparent 62px),
+                radial-gradient(circle at 82% 80%, transparent 0 58px, rgba(36, 215, 234, 0.9) 59px 62px, transparent 64px);
+            opacity: 0.6;
+        }
+
+        .hero-copy {
+            position: absolute;
+            inset: auto 52px 42px;
+            background: linear-gradient(180deg, rgba(5, 26, 71, 0.84), rgba(5, 22, 59, 0.96));
+            border-radius: 28px 28px 0 0;
+            padding: 34px 38px 28px;
+            min-height: 370px;
+        }
+
+        .event-mark {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+            color: #fff;
+            font-weight: 900;
+            font-size: 1.2rem;
+            letter-spacing: 0.02em;
+        }
+
+        .event-mark img {
+            width: 190px;
+            height: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .headline {
+            font-size: clamp(3.8rem, 7vw, 5.4rem);
+            line-height: 0.96;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+        }
+
+        .subheadline {
+            max-width: 740px;
+            font-size: 1.08rem;
+            line-height: 1.28;
+            color: rgba(255, 255, 255, 0.92);
+            margin-bottom: 26px;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: flex-end;
+        }
+
+        .location-chip {
+            display: inline-flex;
+            align-items: center;
+            min-height: 68px;
+            padding: 0 34px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #20d7e8, #22e7ec);
+            color: var(--navy-900);
+            font-size: 0.98rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(36, 215, 234, 0.28);
+        }
+
+        .hero-dates {
+            margin-top: 14px;
+            color: #fff;
+            font-size: 0.92rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .swipe {
+            color: var(--cyan-500);
+            font-size: 0.96rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .swipe::after {
+            content: "›";
+            font-size: 3.4rem;
+            line-height: 1;
+        }
+
+        .benefits {
+            background:
+                linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+        }
+
+        .benefits .network-lines {
+            inset: 24px 18px 24px auto;
+            width: 52%;
+            mask-image: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0, transparent 78%);
+            opacity: 0.36;
+        }
+
+        .benefits-inner,
+        .topics-inner,
+        .cta-inner {
+            position: relative;
+            z-index: 2;
+            padding: 160px 58px 54px;
+            height: 100%;
+        }
+
+        .eyebrow {
+            color: #1a9eaf;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 18px;
+        }
+
+        .dark-title,
+        .light-title {
+            font-size: clamp(3.3rem, 6vw, 4.55rem);
+            line-height: 0.98;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            font-weight: 900;
+            margin-bottom: 14px;
+        }
+
+        .dark-title {
+            color: var(--navy-900);
+        }
+
+        .light-title {
+            color: var(--cyan-500);
+        }
+
+        .lead {
+            font-size: 1.02rem;
+            color: rgba(21, 37, 79, 0.78);
+            margin-bottom: 34px;
+            max-width: 760px;
+        }
+
+        .benefit-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .benefit-item {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        .icon-circle {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: var(--cyan-500);
+            border: 2px solid rgba(36, 215, 234, 0.4);
+            background: rgba(36, 215, 234, 0.08);
+            font-size: 1.1rem;
+            font-weight: 900;
+        }
+
+        .benefit-item strong {
+            display: block;
+            color: var(--navy-900);
+            font-size: 1.02rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .benefit-item span {
+            display: block;
+            margin-top: 4px;
+            color: rgba(21, 37, 79, 0.8);
+            font-size: 0.98rem;
+            line-height: 1.35;
+        }
+
+        .bottom-mark {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 24px;
+            text-align: center;
+            color: var(--navy-900);
+            font-weight: 900;
+            font-size: 1.18rem;
+            opacity: 0.92;
+        }
+
+        .topics {
+            background:
+                radial-gradient(circle at top left, rgba(36, 215, 234, 0.16), transparent 26%),
+                linear-gradient(180deg, #05255d 0%, #03183f 100%);
+        }
+
+        .topics .network-lines {
+            inset: 0;
+            mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.85), transparent 92%);
+        }
+
+        .topics .eyebrow {
+            color: #dffcff;
+        }
+
+        .topics-sub {
+            color: rgba(255, 255, 255, 0.85);
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-bottom: 38px;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px 22px;
+            margin-bottom: 42px;
+        }
+
+        .topic-card {
+            text-align: center;
+            color: #fff;
+        }
+
+        .topic-card .icon-circle {
+            margin: 0 auto 12px;
+            width: 70px;
+            height: 70px;
+            font-size: 1rem;
+            color: var(--cyan-300);
+            border-color: rgba(140, 244, 255, 0.35);
+            background: rgba(36, 215, 234, 0.08);
+        }
+
+        .topic-card span {
+            display: block;
+            font-size: 0.92rem;
+            font-weight: 800;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .topic-chip {
+            width: fit-content;
+            margin: 0 auto;
+            padding: 16px 34px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #1fd5e8, #25eff3);
+            color: var(--navy-900);
+            font-weight: 900;
+            text-transform: uppercase;
+            box-shadow: 0 18px 34px rgba(36, 215, 234, 0.24);
+        }
+
+        .topics .bottom-mark {
+            color: #fff;
+        }
+
+        .cta {
+            background:
+                linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+        }
+
+        .cta .network-lines {
+            inset: 0 0 auto auto;
+            width: 48%;
+            height: 100%;
+            mask-image: linear-gradient(135deg, rgba(0, 0, 0, 0.85), transparent 78%);
+        }
+
+        .cta-topline {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 16px;
+        }
+
+        .save-badge {
+            color: #c56b47;
+            font-size: 0.96rem;
+            font-weight: 800;
+            text-align: right;
+        }
+
+        .cta-headline {
+            color: var(--navy-900);
+            font-size: clamp(3rem, 5.5vw, 4.3rem);
+            line-height: 0.98;
+            text-transform: uppercase;
+            font-weight: 900;
+            margin: 24px 0 8px;
+        }
+
+        .cta-highlight {
+            color: #127c96;
+            font-size: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 26px;
+        }
+
+        .deadline-box {
+            background: linear-gradient(180deg, var(--cyan-500) 0%, var(--cyan-300) 100%);
+            border-radius: 24px;
+            box-shadow: 0 16px 34px rgba(36, 215, 234, 0.28);
+            padding: 18px 24px 20px;
+            color: var(--navy-900);
+            margin-bottom: 26px;
+        }
+
+        .deadline-box strong {
+            display: block;
+            font-size: 1.08rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .deadline-box p {
+            font-size: 0.96rem;
+            line-height: 1.38;
+            color: var(--navy-900);
+        }
+
+        .cta-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .action-box {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 111, 82, 0.5);
+            background: rgba(255, 111, 82, 0.08);
+            padding: 16px 18px;
+            color: var(--navy-900);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .action-box .icon-circle {
+            width: 46px;
+            height: 46px;
+            margin: 0;
+            font-size: 0.92rem;
+            color: var(--coral-500);
+            border-color: rgba(255, 111, 82, 0.4);
+            background: rgba(255, 111, 82, 0.12);
+        }
+
+        .bio-chip {
+            width: fit-content;
+            padding: 15px 28px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #1fd5e8, #25eff3);
+            color: var(--navy-900);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 34px;
+        }
+
+        .cta-footer {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            min-height: 112px;
+            background: linear-gradient(180deg, #0d2e67 0%, #06183f 100%);
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 58px;
+        }
+
+        .footer-links {
+            font-weight: 700;
+            line-height: 1.45;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-brand strong {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 1180px) {
+            .app-shell {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                position: static;
+            }
+        }
+
+        @media (max-width: 820px) {
+            body {
+                background: #eef4fb;
+            }
+
+            .app-shell {
+                width: min(100% - 20px, 1200px);
+                margin: 12px auto 24px;
+                gap: 16px;
+            }
+
+            .controls {
+                padding: 18px;
+                border-radius: 22px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="controls">
+            <h1>Plantilla Instagram 20CCC</h1>
+            <p>La composición replica la estética de la referencia: fondo azul profundo, cian neón, acento coral, geometría tech y el logo oficial del evento.</p>
+
+            <fieldset class="field">
+                <legend>Formato</legend>
+                <div class="radio-group">
+                    <label><input type="radio" name="format" value="post" checked> Post (1:1)</label>
+                    <label><input type="radio" name="format" value="portrait"> Vertical (4:5)</label>
+                    <label><input type="radio" name="format" value="story"> Story (9:16)</label>
+                </div>
+            </fieldset>
+
+            <div class="note">Edita los campos y cambia entre piezas con las pestañas. Cada arte mantiene formato cuadrado 1080x1080 para exportar a Instagram.</div>
+
+            <div class="tab-row">
+                <button class="tab-button active" data-view="cover">Portada</button>
+                <button class="tab-button" data-view="benefits">Beneficios</button>
+                <button class="tab-button" data-view="topics">Temas</button>
+                <button class="tab-button" data-view="cta">Cierre</button>
+            </div>
+
+            <section class="form-panel active" data-panel="cover">
+                <div class="field">
+                    <label for="cover-mark">Etiqueta del evento</label>
+                    <input id="cover-mark" data-target="cover-mark" value="20CCC'26">
+                </div>
+                <div class="field">
+                    <label for="cover-title">Título principal</label>
+                    <input id="cover-title" data-target="cover-title" value="CALL FOR PAPERS">
+                </div>
+                <div class="field">
+                    <label for="cover-subtitle">Descripción</label>
+                    <textarea id="cover-subtitle" data-target="cover-subtitle">¡Sé parte del evento de computación más importante de Colombia!</textarea>
+                </div>
+                <div class="field">
+                    <label for="cover-location">Franja de ubicación</label>
+                    <input id="cover-location" data-target="cover-location" value="20CCC'26 | Cartagena de Indias">
+                </div>
+                <div class="field">
+                    <label for="cover-dates">Fechas</label>
+                    <input id="cover-dates" data-target="cover-dates" value="12, 13, 14 de agosto, 2026">
+                </div>
+                <div class="field">
+                    <label for="cover-swipe">Llamado lateral</label>
+                    <input id="cover-swipe" data-target="cover-swipe" value="Desliza">
+                </div>
+            </section>
+
+            <section class="form-panel" data-panel="benefits">
+                <div class="field">
+                    <label for="benefits-title">Título principal</label>
+                    <textarea id="benefits-title" data-target="benefits-title">¿Por qué presentar tu trabajo?</textarea>
+                </div>
+                <div class="field">
+                    <label for="benefits-eyebrow">Subtítulo superior</label>
+                    <input id="benefits-eyebrow" data-target="benefits-eyebrow" value="Beneficios académicos y profesionales">
+                </div>
+                <div class="field">
+                    <label for="benefit-1-title">Beneficio 1</label>
+                    <input id="benefit-1-title" data-target="benefit-1-title" value="Visibilidad global">
+                </div>
+                <div class="field">
+                    <label for="benefit-1-copy">Texto 1</label>
+                    <input id="benefit-1-copy" data-target="benefit-1-copy" value="Expertos nacionales e internacionales.">
+                </div>
+                <div class="field">
+                    <label for="benefit-2-title">Beneficio 2</label>
+                    <input id="benefit-2-title" data-target="benefit-2-title" value="Networking de alto nivel">
+                </div>
+                <div class="field">
+                    <label for="benefit-2-copy">Texto 2</label>
+                    <input id="benefit-2-copy" data-target="benefit-2-copy" value="Conecta con líderes del sector.">
+                </div>
+                <div class="field">
+                    <label for="benefit-3-title">Beneficio 3</label>
+                    <input id="benefit-3-title" data-target="benefit-3-title" value="Publicación oficial">
+                </div>
+                <div class="field">
+                    <label for="benefit-3-copy">Texto 3</label>
+                    <input id="benefit-3-copy" data-target="benefit-3-copy" value="Memorias indexadas y mayor alcance.">
+                </div>
+            </section>
+
+            <section class="form-panel" data-panel="topics">
+                <div class="field">
+                    <label for="topics-title">Título principal</label>
+                    <textarea id="topics-title" data-target="topics-title">¿Qué temas nos inspiran?</textarea>
+                </div>
+                <div class="field">
+                    <label for="topics-eyebrow">Subtítulo</label>
+                    <input id="topics-eyebrow" data-target="topics-eyebrow" value="Ejes temáticos de investigación">
+                </div>
+                <div class="field">
+                    <label for="topic-1">Tema 1</label>
+                    <input id="topic-1" data-target="topic-1" value="Inteligencia artificial">
+                </div>
+                <div class="field">
+                    <label for="topic-2">Tema 2</label>
+                    <input id="topic-2" data-target="topic-2" value="Ciberseguridad">
+                </div>
+                <div class="field">
+                    <label for="topic-3">Tema 3</label>
+                    <input id="topic-3" data-target="topic-3" value="Transformación digital">
+                </div>
+                <div class="field">
+                    <label for="topic-4">Tema 4</label>
+                    <input id="topic-4" data-target="topic-4" value="Robótica">
+                </div>
+                <div class="field">
+                    <label for="topic-5">Tema 5</label>
+                    <input id="topic-5" data-target="topic-5" value="Tecnologías inmersivas">
+                </div>
+                <div class="field">
+                    <label for="topic-6">Tema 6</label>
+                    <input id="topic-6" data-target="topic-6" value="Educación computacional">
+                </div>
+                <div class="field">
+                    <label for="topic-chip">Botón inferior</label>
+                    <input id="topic-chip" data-target="topic-chip" value="+20 áreas temáticas">
+                </div>
+            </section>
+
+            <section class="form-panel" data-panel="cta">
+                <div class="field">
+                    <label for="cta-save">Texto superior derecho</label>
+                    <input id="cta-save" data-target="cta-save" value="Guarda este post">
+                </div>
+                <div class="field">
+                    <label for="cta-title">Título principal</label>
+                    <textarea id="cta-title" data-target="cta-title">¡No te quedes fuera!</textarea>
+                </div>
+                <div class="field">
+                    <label for="cta-subtitle">Subtítulo</label>
+                    <input id="cta-subtitle" data-target="cta-subtitle" value="Envía tu artículo">
+                </div>
+                <div class="field">
+                    <label for="cta-deadline-title">Bloque de cierre</label>
+                    <input id="cta-deadline-title" data-target="cta-deadline-title" value="Cierre de llamado:">
+                </div>
+                <div class="field">
+                    <label for="cta-deadline-copy">Detalle del cierre</label>
+                    <textarea id="cta-deadline-copy" data-target="cta-deadline-copy">Última deadline: 20 abril
+Artículos largos: 27 abril
+Short papers y simposio: 27 abril</textarea>
+                </div>
+                <div class="field">
+                    <label for="cta-action-1">Acción 1</label>
+                    <input id="cta-action-1" data-target="cta-action-1" value="Consulta el reglamento">
+                </div>
+                <div class="field">
+                    <label for="cta-action-2">Acción 2</label>
+                    <input id="cta-action-2" data-target="cta-action-2" value="Envía tu trabajo">
+                </div>
+                <div class="field">
+                    <label for="cta-bio">Botón inferior</label>
+                    <input id="cta-bio" data-target="cta-bio" value="Más info en link de la bio">
+                </div>
+                <div class="field">
+                    <label for="cta-footer">Footer izquierdo</label>
+                    <textarea id="cta-footer" data-target="cta-footer">www.scc2.org/20ccc/
+#20CCC   #5Co2</textarea>
+                </div>
+            </section>
+        </aside>
+
+        <main class="preview-area">
+            <div class="preview-head">
+                <div>
+                    <h2>Vista previa</h2>
+                    <span>Plantilla HTML5 editable con el logo `20ccc-1-300x114.jpeg` integrado.</span>
+                </div>
+                <span id="preview-format-text">Relación 1:1 para Instagram</span>
+            </div>
+
+            <section class="preview-frame active" data-frame="cover">
+                <article class="poster hero">
+                    <div class="tech-grid"></div>
+                    <div class="brand-pill">
+                        <img src="20ccc-1-300x114.jpeg" alt="Logo 20CCC">
+                    </div>
+                    <div class="bookmark"></div>
+                    <div class="city-glow"></div>
+                    <div class="skyline"></div>
+                    <div class="neon-ribbons"></div>
+                    <div class="poster-content">
+                        <div class="hero-copy">
+                            <div class="event-mark">
+                                <img src="20ccc-1-300x114.jpeg" alt="Marca 20CCC">
+                                <span data-bind="cover-mark">20CCC'26</span>
+                            </div>
+                            <h1 class="headline" data-bind="cover-title">CALL FOR PAPERS</h1>
+                            <p class="subheadline" data-bind="cover-subtitle">¡Sé parte del evento de computación más importante de Colombia!</p>
+                            <div class="hero-meta">
+                                <div>
+                                    <div class="location-chip" data-bind="cover-location">20CCC'26 | Cartagena de Indias</div>
+                                    <div class="hero-dates" data-bind="cover-dates">12, 13, 14 de agosto, 2026</div>
+                                </div>
+                                <div class="swipe" data-bind="cover-swipe">Desliza</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="preview-frame" data-frame="benefits">
+                <article class="poster benefits">
+                    <div class="tech-grid"></div>
+                    <div class="network-lines"></div>
+                    <div class="brand-pill">
+                        <img src="20ccc-1-300x114.jpeg" alt="Logo 20CCC">
+                    </div>
+                    <div class="bookmark"></div>
+                    <div class="benefits-inner">
+                        <h1 class="dark-title" data-bind="benefits-title">¿Por qué presentar tu trabajo?</h1>
+                        <div class="eyebrow" data-bind="benefits-eyebrow">Beneficios académicos y profesionales</div>
+                        <div class="benefit-list">
+                            <div class="benefit-item">
+                                <div class="icon-circle">GL</div>
+                                <div>
+                                    <strong data-bind="benefit-1-title">Visibilidad global</strong>
+                                    <span data-bind="benefit-1-copy">Expertos nacionales e internacionales.</span>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="icon-circle">NW</div>
+                                <div>
+                                    <strong data-bind="benefit-2-title">Networking de alto nivel</strong>
+                                    <span data-bind="benefit-2-copy">Conecta con líderes del sector.</span>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="icon-circle">PB</div>
+                                <div>
+                                    <strong data-bind="benefit-3-title">Publicación oficial</strong>
+                                    <span data-bind="benefit-3-copy">Memorias indexadas y mayor alcance.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-mark">20CCC'26</div>
+                </article>
+            </section>
+
+            <section class="preview-frame" data-frame="topics">
+                <article class="poster topics">
+                    <div class="tech-grid"></div>
+                    <div class="network-lines"></div>
+                    <div class="brand-pill">
+                        <img src="20ccc-1-300x114.jpeg" alt="Logo 20CCC">
+                    </div>
+                    <div class="topics-inner">
+                        <h1 class="light-title" data-bind="topics-title">¿Qué temas nos inspiran?</h1>
+                        <div class="topics-sub" data-bind="topics-eyebrow">Ejes temáticos de investigación</div>
+                        <div class="topic-grid">
+                            <div class="topic-card">
+                                <div class="icon-circle">AI</div>
+                                <span data-bind="topic-1">Inteligencia artificial</span>
+                            </div>
+                            <div class="topic-card">
+                                <div class="icon-circle">CS</div>
+                                <span data-bind="topic-2">Ciberseguridad</span>
+                            </div>
+                            <div class="topic-card">
+                                <div class="icon-circle">DX</div>
+                                <span data-bind="topic-3">Transformación digital</span>
+                            </div>
+                            <div class="topic-card">
+                                <div class="icon-circle">RB</div>
+                                <span data-bind="topic-4">Robótica</span>
+                            </div>
+                            <div class="topic-card">
+                                <div class="icon-circle">XR</div>
+                                <span data-bind="topic-5">Tecnologías inmersivas</span>
+                            </div>
+                            <div class="topic-card">
+                                <div class="icon-circle">ED</div>
+                                <span data-bind="topic-6">Educación computacional</span>
+                            </div>
+                        </div>
+                        <div class="topic-chip" data-bind="topic-chip">+20 áreas temáticas</div>
+                    </div>
+                    <div class="bottom-mark">20CCC'26</div>
+                </article>
+            </section>
+
+            <section class="preview-frame" data-frame="cta">
+                <article class="poster cta">
+                    <div class="tech-grid"></div>
+                    <div class="network-lines"></div>
+                    <div class="brand-pill">
+                        <img src="20ccc-1-300x114.jpeg" alt="Logo 20CCC">
+                    </div>
+                    <div class="bookmark"></div>
+                    <div class="cta-inner">
+                        <div class="cta-topline">
+                            <span></span>
+                            <div class="save-badge" data-bind="cta-save">Guarda este post</div>
+                        </div>
+                        <h1 class="cta-headline" data-bind="cta-title">¡No te quedes fuera!</h1>
+                        <div class="cta-highlight" data-bind="cta-subtitle">Envía tu artículo</div>
+                        <div class="deadline-box">
+                            <strong data-bind="cta-deadline-title">Cierre de llamado:</strong>
+                            <p data-bind="cta-deadline-copy">Última deadline: 20 abril<br>Artículos largos: 27 abril<br>Short papers y simposio: 27 abril</p>
+                        </div>
+                        <div class="cta-actions">
+                            <div class="action-box">
+                                <div class="icon-circle">OK</div>
+                                <span data-bind="cta-action-1">Consulta el reglamento</span>
+                            </div>
+                            <div class="action-box">
+                                <div class="icon-circle">GO</div>
+                                <span data-bind="cta-action-2">Envía tu trabajo</span>
+                            </div>
+                        </div>
+                        <div class="bio-chip" data-bind="cta-bio">Más info en link de la bio</div>
+                    </div>
+                    <div class="cta-footer">
+                        <div class="footer-links" data-bind="cta-footer">www.scc2.org/20ccc/<br>#20CCC   #5Co2</div>
+                        <div class="footer-brand">
+                            <strong>20CCC 2026</strong>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const tabButtons = document.querySelectorAll(".tab-button");
+        const formPanels = document.querySelectorAll(".form-panel");
+        const frames = document.querySelectorAll(".preview-frame");
+        const boundNodes = document.querySelectorAll("[data-bind]");
+        const inputs = document.querySelectorAll("[data-target]");
+        const formatRadios = document.querySelectorAll('input[name="format"]');
+        const posters = document.querySelectorAll('.poster');
+
+        function updatePosterScale() {
+            const activeFrame = document.querySelector('.preview-frame.active');
+            if (!activeFrame) return;
+            const poster = activeFrame.querySelector('.poster');
+            const availableWidth = document.querySelector('.preview-area').clientWidth;
+            const availableHeight = window.innerHeight - 100;
+            
+            let height = 1080;
+            if (poster.classList.contains('story-aspect')) height = 1920;
+            else if (poster.classList.contains('portrait-aspect')) height = 1350;
+
+            const scaleWidth = availableWidth / 1080;
+            const scaleHeight = availableHeight / height;
+            const scale = Math.min(scaleWidth, scaleHeight, 0.95);
+            
+            posters.forEach(p => {
+                p.style.transform = `scale(${scale})`;
+                p.style.transformOrigin = 'top center';
+            });
+            
+            activeFrame.style.height = `${(height * scale) + 40}px`;
+        }
+
+        function setView(view) {
+            tabButtons.forEach((button) => {
+                button.classList.toggle("active", button.dataset.view === view);
+            });
+
+            formPanels.forEach((panel) => {
+                panel.classList.toggle("active", panel.dataset.panel === view);
+            });
+
+            frames.forEach((frame) => {
+                frame.classList.toggle("active", frame.dataset.frame === view);
+            });
+            setTimeout(updatePosterScale, 10);
+        }
+
+        function setFormat(format) {
+            posters.forEach(poster => {
+                poster.classList.remove('story-aspect', 'portrait-aspect');
+                if (format === 'story') {
+                    poster.classList.add('story-aspect');
+                } else if (format === 'portrait') {
+                    poster.classList.add('portrait-aspect');
+                }
+            });
+            const formatText = document.getElementById('preview-format-text');
+            if (formatText) {
+                if (format === 'post') formatText.textContent = 'Relación 1:1 para Instagram';
+                if (format === 'portrait') formatText.textContent = 'Relación 4:5 para Instagram';
+                if (format === 'story') formatText.textContent = 'Relación 9:16 para Instagram';
+            }
+            setTimeout(updatePosterScale, 10);
+        }
+        
+        function updateBoundText(target, value) {
+            boundNodes.forEach((node) => {
+                if (node.dataset.bind !== target) {
+                    return;
+                }
+        
+                if (value.includes("\n")) {
+                    node.innerHTML = value.replace(/\n/g, "<br>");
+                } else {
+                    node.textContent = value;
+                }
+            });
+        }
+
+        tabButtons.forEach((button) => {
+            button.addEventListener("click", () => setView(button.dataset.view));
+        });
+
+        inputs.forEach((input) => {
+            const sync = () => updateBoundText(input.dataset.target, input.value);
+            input.addEventListener("input", sync);
+            sync();
+        });
+
+        formatRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => setFormat(e.target.value));
+        });
+
+        window.addEventListener('resize', updatePosterScale);
+        setTimeout(updatePosterScale, 50);
+    </script>
+</body>
+</html>
