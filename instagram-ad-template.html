@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -192,8 +193,8 @@
 
         .poster {
             width: 1080px;
+            height: 1080px;
             flex-shrink: 0;
-            aspect-ratio: 1 / 1;
             position: relative;
             overflow: hidden;
             border-radius: 34px;
@@ -202,11 +203,11 @@
         }
 
         .poster.portrait-aspect {
-            aspect-ratio: 4 / 5;
+            height: 1350px;
         }
 
         .poster.story-aspect {
-            aspect-ratio: 9 / 16;
+            height: 1920px;
         }
 
         .poster::before,
@@ -339,7 +340,7 @@
             text-transform: uppercase;
             letter-spacing: -0.02em;
         }
-        
+
         .poster.story-aspect .headline {
             font-size: 6.8rem;
             margin-bottom: 32px;
@@ -357,7 +358,7 @@
             color: rgba(255, 255, 255, 0.92);
             margin-bottom: 26px;
         }
-        
+
         .poster.story-aspect .subheadline {
             font-size: 1.6rem;
             max-width: 860px;
@@ -438,16 +439,17 @@
         .poster.story-aspect .cta-inner {
             padding: 180px 80px 80px;
         }
-        
+
         .poster.portrait-aspect .benefits-inner,
         .poster.portrait-aspect .topics-inner,
         .poster.portrait-aspect .cta-inner {
             padding: 160px 68px 68px;
         }
-        
+
         .cta-inner {
             padding-bottom: 180px;
         }
+
         .poster.story-aspect .cta-inner {
             padding-bottom: 240px;
         }
@@ -460,7 +462,7 @@
             margin-bottom: 18px;
             font-size: 1.1rem;
         }
-        
+
         .poster.story-aspect .eyebrow {
             font-size: 1.4rem;
             margin-bottom: 26px;
@@ -475,13 +477,13 @@
             font-weight: 900;
             margin-bottom: 14px;
         }
-        
+
         .poster.story-aspect .dark-title,
         .poster.story-aspect .light-title {
             font-size: 5.8rem;
             margin-bottom: 24px;
         }
-        
+
         .poster.portrait-aspect .dark-title,
         .poster.portrait-aspect .light-title {
             font-size: 5rem;
@@ -544,10 +546,36 @@
             line-height: 1.35;
         }
 
-        .poster.story-aspect .benefit-item strong { font-size: 1.6rem; }
-        .poster.story-aspect .benefit-item span { font-size: 1.4rem; }
-        .poster.story-aspect .icon-circle { width: 72px; height: 72px; font-size: 1.4rem; }
-        .poster.story-aspect .benefit-item { grid-template-columns: 80px 1fr; gap: 24px; margin-bottom: 20px;}
+        /* --- STORY: Beneficios --- */
+        .poster.story-aspect .benefit-list {
+            gap: 48px;
+        }
+
+        .poster.story-aspect .benefit-item {
+            grid-template-columns: 96px 1fr;
+            gap: 32px;
+        }
+
+        .poster.story-aspect .benefit-item strong {
+            font-size: 2rem;
+        }
+
+        .poster.story-aspect .benefit-item span {
+            font-size: 1.8rem;
+            line-height: 1.4;
+            margin-top: 10px;
+        }
+
+        .poster.story-aspect .icon-circle {
+            width: 86px;
+            height: 86px;
+            font-size: 1.8rem;
+        }
+
+        .poster.story-aspect .bottom-mark {
+            font-size: 1.8rem;
+            bottom: 48px;
+        }
 
         .bottom-mark {
             position: absolute;
@@ -581,6 +609,7 @@
             text-transform: uppercase;
             font-weight: 800;
             margin-bottom: 38px;
+            font-size: 1.4rem;
         }
 
         .topic-grid {
@@ -625,6 +654,34 @@
             box-shadow: 0 18px 34px rgba(36, 215, 234, 0.24);
         }
 
+        /* --- STORY: Temas --- */
+        .poster.story-aspect .topics-sub {
+            font-size: 1.9rem;
+            margin-bottom: 60px;
+        }
+
+        .poster.story-aspect .topic-grid {
+            gap: 52px 32px;
+            margin-bottom: 72px;
+        }
+
+        .poster.story-aspect .topic-card .icon-circle {
+            width: 100px;
+            height: 100px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .poster.story-aspect .topic-card span {
+            font-size: 1.3rem;
+            line-height: 1.3;
+        }
+
+        .poster.story-aspect .topic-chip {
+            padding: 26px 52px;
+            font-size: 1.5rem;
+        }
+
         .topics .bottom-mark {
             color: #fff;
         }
@@ -649,91 +706,266 @@
         }
 
         .save-badge {
-            color: #c56b47;
-            font-size: 0.96rem;
-            font-weight: 800;
-            text-align: right;
+            position: absolute;
+            top: 26px;
+            right: 48px;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--coral-500);
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 14px 26px 14px 20px;
+            border-radius: 999px;
+            box-shadow: 0 12px 32px rgba(255, 111, 82, 0.38);
+        }
+
+        .save-badge::before {
+            content: "🔖";
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        .poster.story-aspect .save-badge {
+            top: 26px;
+            right: 70px;
+            font-size: 1.7rem;
+            padding: 20px 38px 20px 30px;
+            gap: 16px;
+        }
+
+        .poster.story-aspect .save-badge::before {
+            font-size: 2rem;
         }
 
         .cta-headline {
             color: var(--navy-900);
-            font-size: clamp(3rem, 5.5vw, 4.3rem);
+            font-size: 4.8rem;
             line-height: 0.98;
             text-transform: uppercase;
             font-weight: 900;
             margin: 24px 0 8px;
         }
 
+        .poster.story-aspect .cta-headline {
+            font-size: 6.8rem;
+            margin: 48px 0 20px;
+        }
+
+        .poster.portrait-aspect .cta-headline {
+            font-size: 5.8rem;
+        }
+
         .cta-highlight {
             color: #127c96;
-            font-size: 2rem;
+            font-size: 2.8rem;
             font-weight: 900;
             text-transform: uppercase;
-            margin-bottom: 26px;
+            margin-bottom: 34px;
+        }
+
+        .poster.story-aspect .cta-highlight {
+            font-size: 4rem;
+            margin-bottom: 56px;
         }
 
         .deadline-box {
-            background: linear-gradient(180deg, var(--cyan-500) 0%, var(--cyan-300) 100%);
+            background: #fff;
+            border: 2px solid rgba(16, 57, 125, 0.1);
+            border-left: 8px solid var(--coral-500);
             border-radius: 24px;
-            box-shadow: 0 16px 34px rgba(36, 215, 234, 0.28);
-            padding: 18px 24px 20px;
-            color: var(--navy-900);
-            margin-bottom: 26px;
+            box-shadow: 0 16px 34px rgba(18, 31, 63, 0.08);
+            padding: 32px 42px;
+            margin-bottom: 34px;
         }
 
         .deadline-box strong {
             display: block;
-            font-size: 1.08rem;
+            font-size: 1.8rem;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            color: var(--navy-900);
+            margin-bottom: 24px;
         }
 
-        .deadline-box p {
-            font-size: 0.96rem;
-            line-height: 1.38;
-            color: var(--navy-900);
+        .date-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(16, 57, 125, 0.1);
+        }
+
+        .date-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .date-label {
+            font-size: 1.5rem;
+            color: rgba(21, 37, 79, 0.84);
+            font-weight: 700;
+        }
+
+        .date-value {
+            font-size: 1.7rem;
+            color: var(--coral-500);
+            font-weight: 900;
+            text-transform: uppercase;
+            background: rgba(255, 111, 82, 0.12);
+            padding: 10px 20px;
+            border-radius: 12px;
+        }
+
+        /* --- STORY: Deadline box --- */
+        .poster.story-aspect .deadline-box {
+            padding: 52px 60px;
+            margin-bottom: 60px;
+        }
+
+        .poster.story-aspect .deadline-box strong {
+            font-size: 2.6rem;
+            margin-bottom: 36px;
+        }
+
+        .poster.story-aspect .date-row {
+            padding: 28px 0;
+        }
+
+        .poster.story-aspect .date-label {
+            font-size: 2rem;
+        }
+
+        .poster.story-aspect .date-value {
+            font-size: 2.3rem;
+            padding: 14px 28px;
+            border-radius: 16px;
         }
 
         .cta-actions {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-            margin-bottom: 18px;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
         }
 
         .action-box {
             display: flex;
-            gap: 12px;
+            gap: 16px;
             align-items: center;
-            border-radius: 20px;
+            border-radius: 24px;
             border: 2px solid rgba(255, 111, 82, 0.5);
             background: rgba(255, 111, 82, 0.08);
-            padding: 16px 18px;
+            padding: 22px 28px;
             color: var(--navy-900);
             font-weight: 900;
             text-transform: uppercase;
+            text-decoration: none;
+            font-size: 1.5rem;
         }
 
         .action-box .icon-circle {
-            width: 46px;
-            height: 46px;
+            width: 58px;
+            height: 58px;
             margin: 0;
-            font-size: 0.92rem;
+            font-size: 1.6rem;
             color: var(--coral-500);
             border-color: rgba(255, 111, 82, 0.4);
             background: rgba(255, 111, 82, 0.12);
         }
 
+        /* --- STORY: Action box & bio chip --- */
+        .poster.story-aspect .action-box {
+            padding: 36px 44px;
+            font-size: 2rem;
+            border-radius: 32px;
+            gap: 24px;
+        }
+
+        .poster.story-aspect .action-box .icon-circle {
+            width: 80px;
+            height: 80px;
+            font-size: 2rem;
+        }
+
+        .poster.story-aspect .cta-actions {
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
         .bio-chip {
             width: fit-content;
-            padding: 15px 28px;
+            padding: 20px 36px;
             border-radius: 999px;
             background: linear-gradient(90deg, #1fd5e8, #25eff3);
             color: var(--navy-900);
             font-weight: 900;
             text-transform: uppercase;
+            font-size: 1.3rem;
             margin-bottom: 34px;
         }
+
+        .poster.story-aspect .bio-chip {
+            padding: 30px 56px;
+            font-size: 1.9rem;
+            margin-bottom: 56px;
+        }
+
+        .poster.story-aspect .save-badge {
+            font-size: 1.9rem;
+        }
+
+        .springer-badge {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #fff;
+            border: 2px solid rgba(16, 57, 125, 0.1);
+            border-radius: 20px;
+            padding: 18px 28px;
+            margin-bottom: 28px;
+            box-shadow: 0 8px 24px rgba(18, 31, 63, 0.06);
+        }
+
+        .springer-badge img {
+            height: 38px;
+            width: auto;
+            flex-shrink: 0;
+            display: block;
+        }
+
+        .springer-badge-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: rgba(21, 37, 79, 0.82);
+            line-height: 1.35;
+        }
+
+        .springer-badge-text strong {
+            display: block;
+            font-size: 1.25rem;
+            color: var(--navy-900);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .poster.story-aspect .springer-badge {
+            padding: 28px 44px;
+            gap: 32px;
+            border-radius: 28px;
+            margin-bottom: 44px;
+        }
+
+        .poster.story-aspect .springer-badge img {
+            height: 56px;
+        }
+
+        .poster.story-aspect .springer-badge-text { font-size: 1.6rem; }
+        .poster.story-aspect .springer-badge-text strong { font-size: 1.8rem; }
 
         .cta-footer {
             position: absolute;
@@ -793,11 +1025,13 @@
         }
     </style>
 </head>
+
 <body>
     <div class="app-shell">
         <aside class="controls">
             <h1>Plantilla Instagram 20CCC</h1>
-            <p>Plantilla institucional dinámica: adaptativa a formatos 1:1, 4:5 y 9:16. Usa colores limpios, alineación centrada y diseño académico sobrio.</p>
+            <p>Plantilla institucional dinámica: adaptativa a formatos 1:1, 4:5 y 9:16. Usa colores limpios, alineación
+                centrada y diseño académico sobrio.</p>
 
             <fieldset class="field">
                 <legend>Formato</legend>
@@ -808,7 +1042,8 @@
                 </div>
             </fieldset>
 
-            <div class="note">Edita los campos y cambia entre piezas con las pestañas. Cada arte mantiene formato cuadrado 1080x1080 para exportar a Instagram.</div>
+            <div class="note">Edita los campos y cambia entre piezas con las pestañas. Cada arte mantiene formato
+                cuadrado 1080x1080 para exportar a Instagram.</div>
 
             <div class="tab-row">
                 <button class="tab-button active" data-view="cover">Portada</button>
@@ -828,7 +1063,8 @@
                 </div>
                 <div class="field">
                     <label for="cover-subtitle">Descripción</label>
-                    <textarea id="cover-subtitle" data-target="cover-subtitle">¡Sé parte del evento de computación más importante de Colombia!</textarea>
+                    <textarea id="cover-subtitle"
+                        data-target="cover-subtitle">¡Sé parte del evento de computación más importante de Colombia!</textarea>
                 </div>
                 <div class="field">
                     <label for="cover-location">Franja de ubicación</label>
@@ -851,7 +1087,8 @@
                 </div>
                 <div class="field">
                     <label for="benefits-eyebrow">Subtítulo superior</label>
-                    <input id="benefits-eyebrow" data-target="benefits-eyebrow" value="Beneficios académicos y profesionales">
+                    <input id="benefits-eyebrow" data-target="benefits-eyebrow"
+                        value="Beneficios académicos y profesionales">
                 </div>
                 <div class="field">
                     <label for="benefit-1-title">Beneficio 1</label>
@@ -859,7 +1096,8 @@
                 </div>
                 <div class="field">
                     <label for="benefit-1-copy">Texto 1</label>
-                    <input id="benefit-1-copy" data-target="benefit-1-copy" value="Expertos nacionales e internacionales.">
+                    <input id="benefit-1-copy" data-target="benefit-1-copy"
+                        value="Expertos nacionales e internacionales.">
                 </div>
                 <div class="field">
                     <label for="benefit-2-title">Beneficio 2</label>
@@ -937,17 +1175,13 @@
                 </div>
                 <div class="field">
                     <label for="cta-deadline-copy">Detalle del cierre</label>
-                    <textarea id="cta-deadline-copy" data-target="cta-deadline-copy">Última deadline: 20 abril
-Artículos largos: 27 abril
-Short papers y simposio: 27 abril</textarea>
+                    <textarea id="cta-deadline-copy" data-target="cta-deadline-copy">Artículos largos: 20 abril
+Demostraciones de software: 27 abril
+Simposio de Maestrías y Doctorado: 20 mayo</textarea>
                 </div>
                 <div class="field">
-                    <label for="cta-action-1">Acción 1</label>
-                    <input id="cta-action-1" data-target="cta-action-1" value="Consulta el reglamento">
-                </div>
-                <div class="field">
-                    <label for="cta-action-2">Acción 2</label>
-                    <input id="cta-action-2" data-target="cta-action-2" value="Envía tu trabajo">
+                    <label for="cta-action-2">Llamado (Botón grande)</label>
+                    <input id="cta-action-2" data-target="cta-action-2" value="ENVÍA TU TRABAJO: www.sco2.org/20CCC">
                 </div>
                 <div class="field">
                     <label for="cta-bio">Botón inferior</label>
@@ -955,8 +1189,8 @@ Short papers y simposio: 27 abril</textarea>
                 </div>
                 <div class="field">
                     <label for="cta-footer">Footer izquierdo</label>
-                    <textarea id="cta-footer" data-target="cta-footer">www.scc2.org/20ccc/
-#20CCC   #5Co2</textarea>
+                    <textarea id="cta-footer" data-target="cta-footer">www.sco2.org/20ccc/
+#20CCC   #SCo2</textarea>
                 </div>
             </section>
         </aside>
@@ -987,10 +1221,12 @@ Short papers y simposio: 27 abril</textarea>
                                 <span data-bind="cover-mark">20CCC'26</span>
                             </div>
                             <h1 class="headline" data-bind="cover-title">CALL FOR PAPERS</h1>
-                            <p class="subheadline" data-bind="cover-subtitle">¡Sé parte del evento de computación más importante de Colombia!</p>
+                            <p class="subheadline" data-bind="cover-subtitle">¡Sé parte del evento de computación más
+                                importante de Colombia!</p>
                             <div class="hero-meta">
                                 <div>
-                                    <div class="location-chip" data-bind="cover-location">20CCC'26 | Cartagena de Indias</div>
+                                    <div class="location-chip" data-bind="cover-location">20CCC'26 | Cartagena de Indias
+                                    </div>
                                     <div class="hero-dates" data-bind="cover-dates">12, 13, 14 de agosto, 2026</div>
                                 </div>
                                 <div class="swipe" data-bind="cover-swipe">Desliza</div>
@@ -1090,30 +1326,30 @@ Short papers y simposio: 27 abril</textarea>
                     </div>
                     <div class="bookmark"></div>
                     <div class="cta-inner">
-                        <div class="cta-topline">
-                            <span></span>
-                            <div class="save-badge" data-bind="cta-save">Guarda este post</div>
-                        </div>
+                    <div class="save-badge" data-bind="cta-save">Guarda este post</div>
                         <h1 class="cta-headline" data-bind="cta-title">¡No te quedes fuera!</h1>
                         <div class="cta-highlight" data-bind="cta-subtitle">Envía tu artículo</div>
                         <div class="deadline-box">
                             <strong data-bind="cta-deadline-title">Cierre de llamado:</strong>
-                            <p data-bind="cta-deadline-copy">Última deadline: 20 abril<br>Artículos largos: 27 abril<br>Short papers y simposio: 27 abril</p>
+                            <p data-bind="cta-deadline-copy">Artículos largos: 20 abril<br>Demostraciones de software: 27 abril<br>Simposio de Maestrías y Doctorado: 20 mayo</p>
+                        </div>
+                        <div class="springer-badge">
+                            <img src="springer.png" alt="Springer">
+                            <div class="springer-badge-text">
+                                <strong>Publicación en Springer</strong>
+                                Memorias indexadas en LNCS
+                            </div>
                         </div>
                         <div class="cta-actions">
                             <div class="action-box">
-                                <div class="icon-circle">OK</div>
-                                <span data-bind="cta-action-1">Consulta el reglamento</span>
-                            </div>
-                            <div class="action-box">
-                                <div class="icon-circle">GO</div>
-                                <span data-bind="cta-action-2">Envía tu trabajo</span>
+                                <div class="icon-circle">🔗</div>
+                                <span data-bind="cta-action-2">ENVÍA TU TRABAJO: www.sco2.org/20CCC</span>
                             </div>
                         </div>
                         <div class="bio-chip" data-bind="cta-bio">Más info en link de la bio</div>
                     </div>
                     <div class="cta-footer">
-                        <div class="footer-links" data-bind="cta-footer">www.scc2.org/20ccc/<br>#20CCC   #5Co2</div>
+                        <div class="footer-links" data-bind="cta-footer">www.scc2.org/20ccc/<br>#20CCC #5Co2</div>
                         <div class="footer-brand">
                             <strong>20CCC 2026</strong>
                         </div>
@@ -1138,7 +1374,7 @@ Short papers y simposio: 27 abril</textarea>
             const poster = activeFrame.querySelector('.poster');
             const availableWidth = document.querySelector('.preview-area').clientWidth;
             const availableHeight = window.innerHeight - 100;
-            
+
             let height = 1080;
             if (poster.classList.contains('story-aspect')) height = 1920;
             else if (poster.classList.contains('portrait-aspect')) height = 1350;
@@ -1146,12 +1382,12 @@ Short papers y simposio: 27 abril</textarea>
             const scaleWidth = availableWidth / 1080;
             const scaleHeight = availableHeight / height;
             const scale = Math.min(scaleWidth, scaleHeight, 0.95);
-            
+
             posters.forEach(p => {
                 p.style.transform = `scale(${scale})`;
                 p.style.transformOrigin = 'top center';
             });
-            
+
             activeFrame.style.height = `${(height * scale) + 40}px`;
         }
 
@@ -1187,13 +1423,24 @@ Short papers y simposio: 27 abril</textarea>
             }
             setTimeout(updatePosterScale, 10);
         }
-        
+
         function updateBoundText(target, value) {
             boundNodes.forEach((node) => {
                 if (node.dataset.bind !== target) {
                     return;
                 }
-        
+
+                if (target === "cta-deadline-copy" && value.includes("\n")) {
+                    node.innerHTML = value.split("\n").map(line => {
+                        const parts = line.split(":");
+                        if (parts.length === 2) {
+                            return `<div class="date-row"><span class="date-label">${parts[0].trim()}</span><span class="date-value">${parts[1].trim()}</span></div>`;
+                        }
+                        return `<div class="date-row">${line}</div>`;
+                    }).join("");
+                    return;
+                }
+
                 if (value.includes("\n")) {
                     node.innerHTML = value.replace(/\n/g, "<br>");
                 } else {
@@ -1220,4 +1467,5 @@ Short papers y simposio: 27 abril</textarea>
         setTimeout(updatePosterScale, 50);
     </script>
 </body>
+
 </html>
