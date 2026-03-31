@@ -12,8 +12,8 @@
             --navy-800: #10397d;
             --cyan-500: #24d7ea;
             --cyan-300: #8cf4ff;
-            --coral-500: #ff6f52;
-            --coral-300: #ff9c7d;
+            --coral-500: #7ab648;
+            --coral-300: #9cd56a;
             --ink-900: #15254f;
             --sand-100: #fff8f1;
             --paper: #ffffff;
@@ -36,9 +36,7 @@
             min-height: 100vh;
             font-family: var(--ui-font);
             color: var(--ink-900);
-            background:
-                radial-gradient(circle at top, rgba(36, 215, 234, 0.18), transparent 26%),
-                linear-gradient(180deg, #f4f7fb 0%, #dde7f4 100%);
+            background: #ffffff;
         }
 
         .app-shell {
@@ -283,131 +281,261 @@
                 linear-gradient(180deg, #ffffff 0%, #f8fbff 17%, #e6eef7 32%, #14376d 62%, #06183f 100%);
         }
 
-        .hero .city-glow {
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 36% 26%, rgba(255, 255, 255, 0.68), transparent 18%),
-                linear-gradient(180deg, transparent 0 45%, rgba(0, 0, 0, 0.05) 46% 100%);
+        .hero {
+            background: #ffffff;
+            position: relative;
+            z-index: 1;
         }
 
-        .hero .skyline,
-        .hero .neon-ribbons {
+        .hero::before {
             display: none;
         }
 
-        .hero-copy {
-            background: linear-gradient(180deg, rgba(5, 26, 71, 0.95), rgba(5, 22, 59, 1));
-            border-radius: 32px;
-            padding: 44px 48px;
+        .top-sco2-strip {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            box-shadow: 0 24px 60px rgba(4, 14, 38, 0.18);
+            height: 120px;
+            background: #E8E9E3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
         }
 
-        .poster.story-aspect .hero-copy {
-            padding: 64px 54px;
-            margin-bottom: 40px;
+        .top-sco2-strip img {
+            height: 60px;
+            object-fit: contain;
+            mix-blend-mode: multiply;
         }
 
-        .poster.portrait-aspect .hero-copy {
-            padding: 54px 48px;
-            margin-bottom: 20px;
+        .poster.story-aspect .top-sco2-strip {
+            height: 160px;
+        }
+
+        .poster.story-aspect .top-sco2-strip img {
+            height: 80px;
+        }
+
+        .hero .poster-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            padding: 160px 60px 80px;
+            position: relative;
+            z-index: 5;
+            width: 100%;
+        }
+
+        .poster.story-aspect .hero .poster-content {
+            padding: 220px 80px 100px;
+        }
+
+        /* Sponsor ribbon */
+        .sponsor-ribbon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .sponsor-ribbon span {
+            font-size: 1rem;
+            color: rgba(21, 37, 79, 0.5);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .sponsor-logos {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .sponsor-logos img {
+            height: 70px;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        .poster.story-aspect .sponsor-ribbon {
+            gap: 20px;
+        }
+
+        .poster.story-aspect .sponsor-ribbon span {
+            font-size: 1.25rem;
+        }
+
+        .poster.story-aspect .sponsor-logos {
+            gap: 80px;
+        }
+
+        .poster.story-aspect .sponsor-logos img {
+            height: 90px;
+        }
+
+        /* Hero Center */
+        .hero-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            margin-top: 40px;
         }
 
         .event-mark {
-            display: inline-flex;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             gap: 16px;
-            margin-bottom: 28px;
-            color: #fff;
-            font-weight: 900;
-            font-size: 1.2rem;
-            letter-spacing: 0.02em;
-        }
-
-        .event-mark img {
-            width: 190px;
-            height: auto;
-            filter: brightness(0) invert(1);
-        }
-
-        .headline {
-            font-size: 4.8rem;
-            line-height: 0.96;
-            font-weight: 900;
-            color: #fff;
-            margin-bottom: 18px;
-            text-transform: uppercase;
-            letter-spacing: -0.02em;
-        }
-
-        .poster.story-aspect .headline {
-            font-size: 6.8rem;
-            margin-bottom: 32px;
-        }
-
-        .poster.portrait-aspect .headline {
-            font-size: 5.6rem;
-            margin-bottom: 24px;
-        }
-
-        .subheadline {
-            max-width: 740px;
-            font-size: 1.2rem;
-            line-height: 1.35;
-            color: rgba(255, 255, 255, 0.92);
-            margin-bottom: 26px;
-        }
-
-        .poster.story-aspect .subheadline {
-            font-size: 1.6rem;
-            max-width: 860px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            color: var(--navy-900);
             margin-bottom: 40px;
         }
 
-        .hero-meta {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            align-items: flex-end;
+        .event-mark img {
+            height: 90px;
+            object-fit: contain;
         }
 
-        .location-chip {
-            display: inline-flex;
-            align-items: center;
-            min-height: 68px;
-            padding: 0 34px;
-            border-radius: 999px;
-            background: linear-gradient(90deg, #20d7e8, #22e7ec);
-            color: var(--navy-900);
-            font-size: 0.98rem;
+        .poster.story-aspect .event-mark {
+            margin-bottom: 60px;
+            font-size: 1.35rem;
+        }
+
+        .poster.story-aspect .event-mark img {
+            height: 130px;
+        }
+
+        .headline {
+            font-size: 5.6rem;
+            line-height: 0.95;
             font-weight: 900;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--navy-900) 0%, #17336d 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-transform: uppercase;
-            box-shadow: 0 10px 30px rgba(36, 215, 234, 0.28);
         }
 
-        .hero-dates {
-            margin-top: 14px;
-            color: #fff;
-            font-size: 0.92rem;
+        .poster.story-aspect .headline {
+            font-size: 8rem;
+            margin-bottom: 30px;
+        }
+
+        .subheadline {
+            font-size: 1.5rem;
+            line-height: 1.4;
+            color: rgba(21, 37, 79, 0.75);
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-weight: 500;
+        }
+
+        .poster.story-aspect .subheadline {
+            font-size: 2.1rem;
+            max-width: 900px;
+            margin-bottom: 70px;
+        }
+
+        /* Glass Panel */
+        .glass-panel {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border: 1px solid rgba(16, 57, 125, 0.08);
+            border-radius: 20px;
+            padding: 24px 40px;
+            gap: 40px;
+            box-shadow: 0 16px 40px rgba(21, 37, 79, 0.05);
+        }
+
+        .glass-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 1.25rem;
             font-weight: 800;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--navy-900);
+        }
+
+        .glass-icon {
+            font-size: 1.6rem;
+        }
+
+        .glass-divider {
+            width: 1px;
+            height: 36px;
+            background: rgba(16, 57, 125, 0.15);
+        }
+
+        .poster.story-aspect .glass-panel {
+            padding: 30px 56px;
+            gap: 56px;
+            border-radius: 30px;
+        }
+
+        .poster.story-aspect .glass-item {
+            font-size: 1.7rem;
+            gap: 22px;
+        }
+
+        .poster.story-aspect .glass-icon {
+            font-size: 2.4rem;
+        }
+
+        .poster.story-aspect .glass-divider {
+            height: 50px;
+        }
+
+        /* Swipe Down */
+        .hero-bottom {
+            display: flex;
+            justify-content: center;
+            width: 100%;
         }
 
         .swipe {
-            color: var(--cyan-500);
-            font-size: 0.96rem;
-            font-weight: 800;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--coral-500);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            animation: bounce 2s infinite ease-in-out;
         }
 
         .swipe::after {
-            content: "›";
-            font-size: 3.4rem;
+            content: "↓";
+            font-size: 2.2rem;
             line-height: 1;
+        }
+
+        .poster.story-aspect .swipe {
+            font-size: 1.45rem;
+            gap: 12px;
+        }
+
+        .poster.story-aspect .swipe::after {
+            font-size: 3.2rem;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .benefits {
@@ -614,21 +742,29 @@
 
         .topic-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px 22px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px 28px;
             margin-bottom: 42px;
         }
 
         .topic-card {
-            text-align: center;
+            display: flex;
+            align-items: center;
+            text-align: left;
+            gap: 16px;
             color: #fff;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 12px 18px;
         }
 
         .topic-card .icon-circle {
-            margin: 0 auto 12px;
-            width: 70px;
-            height: 70px;
+            margin: 0;
+            width: 48px;
+            height: 48px;
             font-size: 1rem;
+            flex-shrink: 0;
             color: var(--cyan-300);
             border-color: rgba(140, 244, 255, 0.35);
             background: rgba(36, 215, 234, 0.08);
@@ -636,10 +772,9 @@
 
         .topic-card span {
             display: block;
-            font-size: 0.92rem;
+            font-size: 0.95rem;
             font-weight: 800;
-            line-height: 1.2;
-            text-transform: uppercase;
+            line-height: 1.25;
         }
 
         .topic-chip {
@@ -661,20 +796,26 @@
         }
 
         .poster.story-aspect .topic-grid {
-            gap: 52px 32px;
+            gap: 32px 32px;
             margin-bottom: 72px;
         }
 
+        .poster.story-aspect .topic-card {
+            gap: 20px;
+            padding: 20px 24px;
+            border-radius: 20px;
+        }
+
         .poster.story-aspect .topic-card .icon-circle {
-            width: 100px;
-            height: 100px;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            width: 72px;
+            height: 72px;
+            font-size: 1.4rem;
+            margin-bottom: 0;
         }
 
         .poster.story-aspect .topic-card span {
-            font-size: 1.3rem;
-            line-height: 1.3;
+            font-size: 1.35rem;
+            line-height: 1.35;
         }
 
         .poster.story-aspect .topic-chip {
@@ -684,6 +825,136 @@
 
         .topics .bottom-mark {
             color: #fff;
+        }
+
+        /* --- EVENTS --- */
+        .events {
+            background: linear-gradient(180deg, #f4f7fb 0%, #dde7f4 100%);
+        }
+
+        .events .network-lines {
+            inset: 0;
+            mask-image: radial-gradient(circle at center 20%, rgba(0, 0, 0, 0.4), transparent 60%);
+        }
+
+        .events-inner {
+            padding: 120px 60px 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .poster.story-aspect .events-inner {
+            padding: 160px 80px 80px;
+        }
+
+        .events-desc {
+            font-size: 1.15rem;
+            color: rgba(21, 37, 79, 0.85);
+            line-height: 1.5;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .poster.story-aspect .events-desc {
+            font-size: 1.45rem;
+            margin-bottom: 48px;
+        }
+
+        .event-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .event-row {
+            display: grid;
+            grid-template-columns: 56px 1fr auto;
+            gap: 16px;
+            background: #fff;
+            border: 1px solid rgba(16, 57, 125, 0.06);
+            border-radius: 18px;
+            padding: 14px 20px 14px 16px;
+            box-shadow: 0 4px 16px rgba(18, 31, 63, 0.03);
+            align-items: center;
+        }
+
+        .event-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: rgba(122, 182, 72, 0.12);
+            color: var(--coral-500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 900;
+        }
+
+        .event-copy strong {
+            display: block;
+            color: var(--navy-900);
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .event-copy span {
+            display: block;
+            color: rgba(21, 37, 79, 0.75);
+            font-size: 1rem;
+            line-height: 1.35;
+        }
+
+        .event-date {
+            display: flex;
+            align-items: center;
+        }
+
+        .event-date strong {
+            font-size: 1.05rem;
+            color: var(--coral-500);
+            font-weight: 900;
+            background: rgba(122, 182, 72, 0.1);
+            padding: 8px 14px;
+            border-radius: 10px;
+            white-space: nowrap;
+        }
+
+        .event-date strong:empty {
+            display: none;
+        }
+
+        .poster.story-aspect .event-list {
+            gap: 36px;
+        }
+
+        .poster.story-aspect .event-row {
+            grid-template-columns: 80px 1fr auto;
+            gap: 28px;
+            padding: 34px 34px 34px 28px;
+            border-radius: 28px;
+        }
+
+        .poster.story-aspect .event-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 22px;
+            font-size: 2.2rem;
+        }
+
+        .poster.story-aspect .event-copy strong {
+            font-size: 1.95rem;
+            margin-bottom: 8px;
+        }
+
+        .poster.story-aspect .event-copy span {
+            font-size: 1.55rem;
+        }
+
+        .poster.story-aspect .event-date strong {
+            font-size: 1.45rem;
+            padding: 10px 18px;
+            border-radius: 14px;
         }
 
         .cta {
@@ -721,7 +992,7 @@
             letter-spacing: 0.06em;
             padding: 14px 26px 14px 20px;
             border-radius: 999px;
-            box-shadow: 0 12px 32px rgba(255, 111, 82, 0.38);
+            box-shadow: 0 12px 32px rgba(122, 182, 72, 0.38);
         }
 
         .save-badge::before {
@@ -815,7 +1086,7 @@
             color: var(--coral-500);
             font-weight: 900;
             text-transform: uppercase;
-            background: rgba(255, 111, 82, 0.12);
+            background: rgba(122, 182, 72, 0.12);
             padding: 10px 20px;
             border-radius: 12px;
         }
@@ -857,8 +1128,8 @@
             gap: 16px;
             align-items: center;
             border-radius: 24px;
-            border: 2px solid rgba(255, 111, 82, 0.5);
-            background: rgba(255, 111, 82, 0.08);
+            border: 2px solid rgba(122, 182, 72, 0.5);
+            background: rgba(122, 182, 72, 0.08);
             padding: 22px 28px;
             color: var(--navy-900);
             font-weight: 900;
@@ -873,8 +1144,8 @@
             margin: 0;
             font-size: 1.6rem;
             color: var(--coral-500);
-            border-color: rgba(255, 111, 82, 0.4);
-            background: rgba(255, 111, 82, 0.12);
+            border-color: rgba(122, 182, 72, 0.4);
+            background: rgba(122, 182, 72, 0.12);
         }
 
         /* --- STORY: Action box & bio chip --- */
@@ -931,7 +1202,7 @@
         }
 
         .springer-badge img {
-            height: 38px;
+            height: 48px;
             width: auto;
             flex-shrink: 0;
             display: block;
@@ -961,7 +1232,7 @@
         }
 
         .poster.story-aspect .springer-badge img {
-            height: 56px;
+            height: 68px;
         }
 
         .poster.story-aspect .springer-badge-text { font-size: 1.6rem; }
@@ -1008,7 +1279,7 @@
 
         @media (max-width: 820px) {
             body {
-                background: #eef4fb;
+                background: #ffffff;
             }
 
             .app-shell {
@@ -1030,36 +1301,39 @@
     <div class="app-shell">
         <aside class="controls">
             <h1>Plantilla Instagram 20CCC</h1>
-            <p>Plantilla institucional dinámica: adaptativa a formatos 1:1, 4:5 y 9:16. Usa colores limpios, alineación
+            <p>Plantilla institucional dinámica: adaptativa a formatos 4:5 y 9:16. Usa colores limpios, alineación
                 centrada y diseño académico sobrio.</p>
 
             <fieldset class="field">
                 <legend>Formato</legend>
                 <div class="radio-group">
-                    <label><input type="radio" name="format" value="post" checked> Post (1:1)</label>
-                    <label><input type="radio" name="format" value="portrait"> Vertical (4:5)</label>
+                    <label><input type="radio" name="format" value="portrait" checked> Vertical (4:5)</label>
                     <label><input type="radio" name="format" value="story"> Story (9:16)</label>
                 </div>
             </fieldset>
 
-            <div class="note">Edita los campos y cambia entre piezas con las pestañas. Cada arte mantiene formato
-                cuadrado 1080x1080 para exportar a Instagram.</div>
+            <div class="note">Edita los campos y cambia entre piezas con las pestañas. Genera los diseños en Vertical (4:5) o Historias (9:16).</div>
 
             <div class="tab-row">
                 <button class="tab-button active" data-view="cover">Portada</button>
                 <button class="tab-button" data-view="benefits">Beneficios</button>
                 <button class="tab-button" data-view="topics">Temas</button>
+                <button class="tab-button" data-view="events">Eventos</button>
                 <button class="tab-button" data-view="cta">Cierre</button>
             </div>
 
             <section class="form-panel active" data-panel="cover">
+                <div class="field">
+                    <label for="cover-sponsor-label">Etiqueta patrocinadores</label>
+                    <input id="cover-sponsor-label" data-target="cover-sponsor-label" value="Organizan:">
+                </div>
                 <div class="field">
                     <label for="cover-mark">Etiqueta del evento</label>
                     <input id="cover-mark" data-target="cover-mark" value="20CCC'26">
                 </div>
                 <div class="field">
                     <label for="cover-title">Título principal</label>
-                    <input id="cover-title" data-target="cover-title" value="CALL FOR PAPERS">
+                    <input id="cover-title" data-target="cover-title" value="20 CONGRESO COLOMBIANO DE COMPUTACIÓN">
                 </div>
                 <div class="field">
                     <label for="cover-subtitle">Descripción</label>
@@ -1067,15 +1341,15 @@
                         data-target="cover-subtitle">¡Sé parte del evento de computación más importante de Colombia!</textarea>
                 </div>
                 <div class="field">
-                    <label for="cover-location">Franja de ubicación</label>
-                    <input id="cover-location" data-target="cover-location" value="20CCC'26 | Cartagena de Indias">
+                    <label for="cover-location">Ubicación</label>
+                    <input id="cover-location" data-target="cover-location" value="Cartagena de Indias">
                 </div>
                 <div class="field">
                     <label for="cover-dates">Fechas</label>
-                    <input id="cover-dates" data-target="cover-dates" value="12, 13, 14 de agosto, 2026">
+                    <input id="cover-dates" data-target="cover-dates" value="12, 13, 14 Ago 2026">
                 </div>
                 <div class="field">
-                    <label for="cover-swipe">Llamado lateral</label>
+                    <label for="cover-swipe">Llamado infernal</label>
                     <input id="cover-swipe" data-target="cover-swipe" value="Desliza">
                 </div>
             </section>
@@ -1092,28 +1366,28 @@
                 </div>
                 <div class="field">
                     <label for="benefit-1-title">Beneficio 1</label>
-                    <input id="benefit-1-title" data-target="benefit-1-title" value="Visibilidad global">
+                    <input id="benefit-1-title" data-target="benefit-1-title" value="Intercambio de Conocimiento">
                 </div>
                 <div class="field">
                     <label for="benefit-1-copy">Texto 1</label>
                     <input id="benefit-1-copy" data-target="benefit-1-copy"
-                        value="Expertos nacionales e internacionales.">
+                        value="Aporta al debate académico y formación de talento.">
                 </div>
                 <div class="field">
                     <label for="benefit-2-title">Beneficio 2</label>
-                    <input id="benefit-2-title" data-target="benefit-2-title" value="Networking de alto nivel">
+                    <input id="benefit-2-title" data-target="benefit-2-title" value="Conexión Estratégica">
                 </div>
                 <div class="field">
                     <label for="benefit-2-copy">Texto 2</label>
-                    <input id="benefit-2-copy" data-target="benefit-2-copy" value="Conecta con líderes del sector.">
+                    <input id="benefit-2-copy" data-target="benefit-2-copy" value="Interactúa con líderes académicos y de la industria.">
                 </div>
                 <div class="field">
                     <label for="benefit-3-title">Beneficio 3</label>
-                    <input id="benefit-3-title" data-target="benefit-3-title" value="Publicación oficial">
+                    <input id="benefit-3-title" data-target="benefit-3-title" value="Publicación Oficial">
                 </div>
                 <div class="field">
                     <label for="benefit-3-copy">Texto 3</label>
-                    <input id="benefit-3-copy" data-target="benefit-3-copy" value="Memorias indexadas y mayor alcance.">
+                    <input id="benefit-3-copy" data-target="benefit-3-copy" value="Memorias indexadas con revisión por pares ciegos.">
                 </div>
             </section>
 
@@ -1128,31 +1402,113 @@
                 </div>
                 <div class="field">
                     <label for="topic-1">Tema 1</label>
-                    <input id="topic-1" data-target="topic-1" value="Inteligencia artificial">
+                    <input id="topic-1" data-target="topic-1" value="Inteligencia Artificial y Datos">
                 </div>
                 <div class="field">
                     <label for="topic-2">Tema 2</label>
-                    <input id="topic-2" data-target="topic-2" value="Ciberseguridad">
+                    <input id="topic-2" data-target="topic-2" value="Sistemas Inteligentes">
                 </div>
                 <div class="field">
                     <label for="topic-3">Tema 3</label>
-                    <input id="topic-3" data-target="topic-3" value="Transformación digital">
+                    <input id="topic-3" data-target="topic-3" value="Software y Transformación">
                 </div>
                 <div class="field">
                     <label for="topic-4">Tema 4</label>
-                    <input id="topic-4" data-target="topic-4" value="Robótica">
+                    <input id="topic-4" data-target="topic-4" value="Seguridad Digital">
                 </div>
                 <div class="field">
                     <label for="topic-5">Tema 5</label>
-                    <input id="topic-5" data-target="topic-5" value="Tecnologías inmersivas">
+                    <input id="topic-5" data-target="topic-5" value="Robótica e Interacción">
                 </div>
                 <div class="field">
                     <label for="topic-6">Tema 6</label>
-                    <input id="topic-6" data-target="topic-6" value="Educación computacional">
+                    <input id="topic-6" data-target="topic-6" value="Tecnologías Inmersivas">
+                </div>
+                <div class="field">
+                    <label for="topic-7">Tema 7</label>
+                    <input id="topic-7" data-target="topic-7" value="Interacción y Accesibilidad">
+                </div>
+                <div class="field">
+                    <label for="topic-8">Tema 8</label>
+                    <input id="topic-8" data-target="topic-8" value="Educación Computacional">
                 </div>
                 <div class="field">
                     <label for="topic-chip">Botón inferior</label>
-                    <input id="topic-chip" data-target="topic-chip" value="+20 áreas temáticas">
+                    <input id="topic-chip" data-target="topic-chip" value="Envía tu contribución">
+                </div>
+            </section>
+            <section class="form-panel" data-panel="events">
+                <div class="field">
+                    <label for="events-eyebrow">Subtítulo superior</label>
+                    <input id="events-eyebrow" data-target="events-eyebrow" value="Llamado a trabajos (Call for Papers)">
+                </div>
+                <div class="field">
+                    <label for="events-title">Título principal</label>
+                    <textarea id="events-title" data-target="events-title">Eventos y Programación</textarea>
+                </div>
+                <div class="field">
+                    <label for="events-desc">Descripción general</label>
+                    <textarea id="events-desc" data-target="events-desc">Envía tu artículo de investigación al 20CCC’26. Los mejores trabajos serán evaluados por pares y publicados en las memorias oficiales indexadas del congreso.</textarea>
+                </div>
+                <div class="field">
+                    <label for="event-1-title">Evento 1 (Título)</label>
+                    <input id="event-1-title" data-target="event-1-title" value="Artículos Largos">
+                </div>
+                <div class="field">
+                    <label for="event-1-copy">Evento 1 (Breve info)</label>
+                    <input id="event-1-copy" data-target="event-1-copy" value="Llamado principal de investigación.">
+                </div>
+                <div class="field">
+                    <label for="event-1-date">Evento 1 (Fecha)</label>
+                    <input id="event-1-date" data-target="event-1-date" value="Cierre: 20 Abril">
+                </div>
+                <div class="field">
+                    <label for="event-2-title">Evento 2 (Título)</label>
+                    <input id="event-2-title" data-target="event-2-title" value="Demos de Software">
+                </div>
+                <div class="field">
+                    <label for="event-2-copy">Evento 2 (Breve info)</label>
+                    <input id="event-2-copy" data-target="event-2-copy" value="Presentación de prototipos funcionales.">
+                </div>
+                <div class="field">
+                    <label for="event-2-date">Evento 2 (Fecha)</label>
+                    <input id="event-2-date" data-target="event-2-date" value="Cierre: 27 Abril">
+                </div>
+                <div class="field">
+                    <label for="event-3-title">Evento 3 (Título)</label>
+                    <input id="event-3-title" data-target="event-3-title" value="Simposio SMD2026">
+                </div>
+                <div class="field">
+                    <label for="event-3-copy">Evento 3 (Breve info)</label>
+                    <input id="event-3-copy" data-target="event-3-copy" value="Investigación para maestría y doctorado.">
+                </div>
+                <div class="field">
+                    <label for="event-3-date">Evento 3 (Fecha)</label>
+                    <input id="event-3-date" data-target="event-3-date" value="Cierre: 20 Mayo">
+                </div>
+                <div class="field">
+                    <label for="event-4-title">Evento 4 (Título)</label>
+                    <input id="event-4-title" data-target="event-4-title" value="Retos y Workshops">
+                </div>
+                <div class="field">
+                    <label for="event-4-copy">Evento 4 (Breve info)</label>
+                    <input id="event-4-copy" data-target="event-4-copy" value="Colaboración métrica sobre problemas.">
+                </div>
+                <div class="field">
+                    <label for="event-4-date">Evento 4 (Fecha)</label>
+                    <input id="event-4-date" data-target="event-4-date" value="">
+                </div>
+                <div class="field">
+                    <label for="event-5-title">Evento 5 (Título)</label>
+                    <input id="event-5-title" data-target="event-5-title" value="Workshop II MCC">
+                </div>
+                <div class="field">
+                    <label for="event-5-copy">Evento 5 (Breve info)</label>
+                    <input id="event-5-copy" data-target="event-5-copy" value="Mujeres en Computación en Colombia.">
+                </div>
+                <div class="field">
+                    <label for="event-5-date">Evento 5 (Fecha)</label>
+                    <input id="event-5-date" data-target="event-5-date" value="">
                 </div>
             </section>
 
@@ -1201,43 +1557,57 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
                     <h2>Vista previa</h2>
                     <span>Plantilla HTML5 editable con el logo `20ccc-1-300x114.jpeg` integrado.</span>
                 </div>
-                <span id="preview-format-text">Relación 1:1 para Instagram</span>
+                <span id="preview-format-text">Relación 4:5 para Instagram</span>
             </div>
 
             <section class="preview-frame active" data-frame="cover">
-                <article class="poster hero">
-                    <div class="tech-grid"></div>
-                    <div class="brand-pill">
-                        <img src="20ccc-1-300x114.jpeg" alt="Logo 20CCC">
+                <article class="poster hero portrait-aspect">
+                    <div class="top-sco2-strip">
+                        <img src="SCO2.jpg" alt="SCo2">
                     </div>
-                    <div class="bookmark"></div>
-                    <div class="city-glow"></div>
-                    <div class="skyline"></div>
-                    <div class="neon-ribbons"></div>
+                    <div class="tech-grid"></div>
                     <div class="poster-content">
-                        <div class="hero-copy">
+                        <!-- Top Sponsors -->
+                        <div class="sponsor-ribbon">
+                            <span data-bind="cover-sponsor-label">Organizan:</span>
+                            <div class="sponsor-logos">
+                                <img src="utb.png" alt="UTB">
+                                <img src="escuela.jpg" alt="Escuela Naval">
+                            </div>
+                        </div>
+
+                        <!-- Center Hero -->
+                        <div class="hero-center">
                             <div class="event-mark">
                                 <img src="20ccc-1-300x114.jpeg" alt="Marca 20CCC">
                                 <span data-bind="cover-mark">20CCC'26</span>
                             </div>
-                            <h1 class="headline" data-bind="cover-title">CALL FOR PAPERS</h1>
-                            <p class="subheadline" data-bind="cover-subtitle">¡Sé parte del evento de computación más
-                                importante de Colombia!</p>
-                            <div class="hero-meta">
-                                <div>
-                                    <div class="location-chip" data-bind="cover-location">20CCC'26 | Cartagena de Indias
-                                    </div>
-                                    <div class="hero-dates" data-bind="cover-dates">12, 13, 14 de agosto, 2026</div>
+                            <h1 class="headline" data-bind="cover-title">20 CONGRESO COLOMBIANO DE COMPUTACIÓN</h1>
+                            <p class="subheadline" data-bind="cover-subtitle">¡Sé parte del evento de computación más importante de Colombia!</p>
+                            
+                            <div class="glass-panel">
+                                <div class="glass-item">
+                                    <div class="glass-icon">📍</div>
+                                    <span data-bind="cover-location">Cartagena de Indias</span>
                                 </div>
-                                <div class="swipe" data-bind="cover-swipe">Desliza</div>
+                                <div class="glass-divider"></div>
+                                <div class="glass-item">
+                                    <div class="glass-icon">📅</div>
+                                    <span data-bind="cover-dates">12, 13, 14 Ago 2026</span>
+                                </div>
                             </div>
+                        </div>
+
+                        <!-- Bottom -->
+                        <div class="hero-bottom">
+                            <div class="swipe" data-bind="cover-swipe">Desliza</div>
                         </div>
                     </div>
                 </article>
             </section>
 
             <section class="preview-frame" data-frame="benefits">
-                <article class="poster benefits">
+                <article class="poster benefits portrait-aspect">
                     <div class="tech-grid"></div>
                     <div class="network-lines"></div>
                     <div class="brand-pill">
@@ -1249,24 +1619,24 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
                         <div class="eyebrow" data-bind="benefits-eyebrow">Beneficios académicos y profesionales</div>
                         <div class="benefit-list">
                             <div class="benefit-item">
-                                <div class="icon-circle">GL</div>
+                                <div class="icon-circle">IC</div>
                                 <div>
-                                    <strong data-bind="benefit-1-title">Visibilidad global</strong>
-                                    <span data-bind="benefit-1-copy">Expertos nacionales e internacionales.</span>
+                                    <strong data-bind="benefit-1-title">Intercambio de Conocimiento</strong>
+                                    <span data-bind="benefit-1-copy">Aporta al debate académico y formación de talento.</span>
                                 </div>
                             </div>
                             <div class="benefit-item">
-                                <div class="icon-circle">NW</div>
+                                <div class="icon-circle">CE</div>
                                 <div>
-                                    <strong data-bind="benefit-2-title">Networking de alto nivel</strong>
-                                    <span data-bind="benefit-2-copy">Conecta con líderes del sector.</span>
+                                    <strong data-bind="benefit-2-title">Conexión Estratégica</strong>
+                                    <span data-bind="benefit-2-copy">Interactúa con líderes académicos y de la industria.</span>
                                 </div>
                             </div>
                             <div class="benefit-item">
-                                <div class="icon-circle">PB</div>
+                                <div class="icon-circle">PO</div>
                                 <div>
-                                    <strong data-bind="benefit-3-title">Publicación oficial</strong>
-                                    <span data-bind="benefit-3-copy">Memorias indexadas y mayor alcance.</span>
+                                    <strong data-bind="benefit-3-title">Publicación Oficial</strong>
+                                    <span data-bind="benefit-3-copy">Memorias indexadas con revisión por pares ciegos.</span>
                                 </div>
                             </div>
                         </div>
@@ -1276,7 +1646,7 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
             </section>
 
             <section class="preview-frame" data-frame="topics">
-                <article class="poster topics">
+                <article class="poster topics portrait-aspect">
                     <div class="tech-grid"></div>
                     <div class="network-lines"></div>
                     <div class="brand-pill">
@@ -1287,38 +1657,115 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
                         <div class="topics-sub" data-bind="topics-eyebrow">Ejes temáticos de investigación</div>
                         <div class="topic-grid">
                             <div class="topic-card">
-                                <div class="icon-circle">AI</div>
-                                <span data-bind="topic-1">Inteligencia artificial</span>
+                                <div class="icon-circle">IA</div>
+                                <span data-bind="topic-1">Inteligencia Artificial y Datos</span>
+                            </div>
+                            <div class="topic-card">
+                                <div class="icon-circle">SI</div>
+                                <span data-bind="topic-2">Sistemas Inteligentes</span>
+                            </div>
+                            <div class="topic-card">
+                                <div class="icon-circle">SD</div>
+                                <span data-bind="topic-3">Software y Transformación</span>
                             </div>
                             <div class="topic-card">
                                 <div class="icon-circle">CS</div>
-                                <span data-bind="topic-2">Ciberseguridad</span>
-                            </div>
-                            <div class="topic-card">
-                                <div class="icon-circle">DX</div>
-                                <span data-bind="topic-3">Transformación digital</span>
+                                <span data-bind="topic-4">Seguridad Digital</span>
                             </div>
                             <div class="topic-card">
                                 <div class="icon-circle">RB</div>
-                                <span data-bind="topic-4">Robótica</span>
+                                <span data-bind="topic-5">Robótica e Interacción</span>
                             </div>
                             <div class="topic-card">
-                                <div class="icon-circle">XR</div>
-                                <span data-bind="topic-5">Tecnologías inmersivas</span>
+                                <div class="icon-circle">TI</div>
+                                <span data-bind="topic-6">Tecnologías Inmersivas</span>
+                            </div>
+                            <div class="topic-card">
+                                <div class="icon-circle">HC</div>
+                                <span data-bind="topic-7">Interacción y Accesibilidad</span>
                             </div>
                             <div class="topic-card">
                                 <div class="icon-circle">ED</div>
-                                <span data-bind="topic-6">Educación computacional</span>
+                                <span data-bind="topic-8">Educación Computacional</span>
                             </div>
                         </div>
-                        <div class="topic-chip" data-bind="topic-chip">+20 áreas temáticas</div>
+                        <div class="topic-chip" data-bind="topic-chip">Envía tu contribución</div>
+                    </div>
+                    <div class="bottom-mark">20CCC'26</div>
+                </article>
+            </section>
+
+            <section class="preview-frame" data-frame="events">
+                <article class="poster events portrait-aspect">
+                    <div class="tech-grid"></div>
+                    <div class="network-lines"></div>
+                    <div class="brand-pill">
+                        <img src="20ccc-1-300x114.jpeg" alt="Logo 20CCC">
+                    </div>
+                    <div class="bookmark"></div>
+                    <div class="events-inner">
+                        <h1 class="dark-title" data-bind="events-title">Eventos y Programación</h1>
+                        <div class="eyebrow" data-bind="events-eyebrow">Llamado a trabajos (Call for Papers)</div>
+                        <p class="events-desc" data-bind="events-desc">Envía tu artículo de investigación al 20CCC’26. Los mejores trabajos serán evaluados por pares y publicados en las memorias oficiales indexadas del congreso.</p>
+                        <div class="event-list">
+                            <div class="event-row">
+                                <div class="event-icon">AL</div>
+                                <div class="event-copy">
+                                    <strong data-bind="event-1-title">Artículos Largos</strong>
+                                    <span data-bind="event-1-copy">Llamado principal de investigación.</span>
+                                </div>
+                                <div class="event-date">
+                                    <strong data-bind="event-1-date">Cierre: 20 Abril</strong>
+                                </div>
+                            </div>
+                            <div class="event-row">
+                                <div class="event-icon">DS</div>
+                                <div class="event-copy">
+                                    <strong data-bind="event-2-title">Demos de Software</strong>
+                                    <span data-bind="event-2-copy">Presentación de prototipos funcionales.</span>
+                                </div>
+                                <div class="event-date">
+                                    <strong data-bind="event-2-date">Cierre: 27 Abril</strong>
+                                </div>
+                            </div>
+                            <div class="event-row">
+                                <div class="event-icon">SM</div>
+                                <div class="event-copy">
+                                    <strong data-bind="event-3-title">Simposio SMD2026</strong>
+                                    <span data-bind="event-3-copy">Investigación para maestría y doctorado.</span>
+                                </div>
+                                <div class="event-date">
+                                    <strong data-bind="event-3-date">Cierre: 20 Mayo</strong>
+                                </div>
+                            </div>
+                            <div class="event-row">
+                                <div class="event-icon">RW</div>
+                                <div class="event-copy">
+                                    <strong data-bind="event-4-title">Retos y Workshops</strong>
+                                    <span data-bind="event-4-copy">Colaboración métrica sobre problemas.</span>
+                                </div>
+                                <div class="event-date">
+                                    <strong data-bind="event-4-date"></strong>
+                                </div>
+                            </div>
+                            <div class="event-row">
+                                <div class="event-icon">MC</div>
+                                <div class="event-copy">
+                                    <strong data-bind="event-5-title">Workshop II MCC</strong>
+                                    <span data-bind="event-5-copy">Mujeres en Computación en Colombia.</span>
+                                </div>
+                                <div class="event-date">
+                                    <strong data-bind="event-5-date"></strong>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="bottom-mark">20CCC'26</div>
                 </article>
             </section>
 
             <section class="preview-frame" data-frame="cta">
-                <article class="poster cta">
+                <article class="poster cta portrait-aspect">
                     <div class="tech-grid"></div>
                     <div class="network-lines"></div>
                     <div class="brand-pill">
@@ -1375,9 +1822,8 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
             const availableWidth = document.querySelector('.preview-area').clientWidth;
             const availableHeight = window.innerHeight - 100;
 
-            let height = 1080;
+            let height = 1350;
             if (poster.classList.contains('story-aspect')) height = 1920;
-            else if (poster.classList.contains('portrait-aspect')) height = 1350;
 
             const scaleWidth = availableWidth / 1080;
             const scaleHeight = availableHeight / height;
@@ -1417,7 +1863,6 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
             });
             const formatText = document.getElementById('preview-format-text');
             if (formatText) {
-                if (format === 'post') formatText.textContent = 'Relación 1:1 para Instagram';
                 if (format === 'portrait') formatText.textContent = 'Relación 4:5 para Instagram';
                 if (format === 'story') formatText.textContent = 'Relación 9:16 para Instagram';
             }
