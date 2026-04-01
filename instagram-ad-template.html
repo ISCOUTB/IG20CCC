@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>20CCC Instagram Ad Template</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --navy-950: #041a47;
@@ -23,7 +24,14 @@
             --radius-lg: 24px;
             --radius-md: 18px;
             --frame: 1080px;
-            --ui-font: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            --ui-font: "Inter", "Segoe UI", system-ui, sans-serif;
+            --border-light: rgba(16, 57, 125, 0.1);
+            --border-mid: rgba(16, 57, 125, 0.18);
+            --icon-bg-light: rgba(16, 57, 125, 0.06);
+            --green-bg-light: rgba(122, 182, 72, 0.12);
+            --gradient-cyan: linear-gradient(90deg, #1fd5e8, #25eff3);
+            --shadow-card: 0 8px 24px rgba(18, 31, 63, 0.08);
+            --footer-dark: #0d2e67;
         }
 
         * {
@@ -52,7 +60,7 @@
             position: sticky;
             top: 20px;
             background: rgba(255, 255, 255, 0.92);
-            border: 1px solid rgba(16, 57, 125, 0.1);
+            border: 1px solid var(--border-light);
             border-radius: 28px;
             box-shadow: var(--shadow-soft);
             backdrop-filter: blur(18px);
@@ -243,20 +251,14 @@
             position: absolute;
             top: 26px;
             left: 26px;
-            min-width: 530px;
-            padding: 24px 38px 24px 32px;
-            border-radius: 0 0 32px 0;
-            background: rgba(255, 255, 255, 0.96);
             display: flex;
             align-items: center;
             gap: 20px;
             z-index: 3;
-            clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
-            box-shadow: 0 16px 28px rgba(18, 31, 63, 0.12);
         }
 
         .brand-pill img {
-            width: 320px;
+            width: 380px;
             height: auto;
             display: block;
         }
@@ -276,12 +278,6 @@
         }
 
         .hero {
-            background:
-                linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.22) 32%, rgba(4, 26, 71, 0.16) 60%, rgba(4, 26, 71, 0) 100%),
-                linear-gradient(180deg, #ffffff 0%, #f8fbff 17%, #e6eef7 32%, #14376d 62%, #06183f 100%);
-        }
-
-        .hero {
             background: #ffffff;
             position: relative;
             z-index: 1;
@@ -296,8 +292,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 120px;
-            background: #E8E9E3;
+            height: 140px;
+            background: var(--navy-900);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -305,17 +301,17 @@
         }
 
         .top-sco2-strip img {
-            height: 60px;
-            object-fit: contain;
-            mix-blend-mode: multiply;
+            height: 72px;
+            object-fit: contain;            
+            mix-blend-mode: screen;
         }
 
         .poster.story-aspect .top-sco2-strip {
-            height: 160px;
+            height: 180px;
         }
 
         .poster.story-aspect .top-sco2-strip img {
-            height: 80px;
+            height: 110px;
         }
 
         .hero .poster-content {
@@ -358,7 +354,7 @@
         }
 
         .sponsor-logos img {
-            height: 70px;
+            height: 99px;
             object-fit: contain;
             mix-blend-mode: multiply;
         }
@@ -376,7 +372,7 @@
         }
 
         .poster.story-aspect .sponsor-logos img {
-            height: 90px;
+            height: 132px;
         }
 
         /* Hero Center */
@@ -415,16 +411,17 @@
         }
 
         .headline {
-            font-size: 5.6rem;
-            line-height: 0.95;
+            font-size: 6rem;
+            line-height: 1;
             font-weight: 900;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.04em;
             margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--navy-900) 0%, #17336d 100%);
+            background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy-800) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
+            font-feature-settings: "ss01";
         }
 
         .poster.story-aspect .headline {
@@ -450,13 +447,19 @@
         /* Glass Panel */
         .glass-panel {
             display: flex;
-            align-items: center;
-            background: #fff;
-            border: 1px solid rgba(16, 57, 125, 0.08);
+            flex-direction: column;
+            background: #f0f5fd;
+            border: 1.5px solid var(--border-mid);
             border-radius: 20px;
             padding: 24px 40px;
+            gap: 20px;
+            box-shadow: 0 20px 50px rgba(4, 26, 71, 0.1);
+        }
+
+        .glass-panel > div:first-child {
+            display: flex;
+            align-items: center;
             gap: 40px;
-            box-shadow: 0 16px 40px rgba(21, 37, 79, 0.05);
         }
 
         .glass-item {
@@ -479,9 +482,28 @@
             background: rgba(16, 57, 125, 0.15);
         }
 
+        .glass-venue {
+            font-size: 1.1rem;
+            font-weight: 800;
+            line-height: 1.5;
+            color: var(--navy-900);
+            text-align: center;
+            padding-top: 8px;
+            border-top: 1px solid rgba(16, 57, 125, 0.12);
+            width: 100%;
+        }
+
+        .glass-venue strong {
+            display: block;
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: var(--navy-900);
+            margin-bottom: 4px;
+        }
+
         .poster.story-aspect .glass-panel {
             padding: 30px 56px;
-            gap: 56px;
+            gap: 32px;
             border-radius: 30px;
         }
 
@@ -498,6 +520,16 @@
             height: 50px;
         }
 
+        .poster.story-aspect .glass-venue {
+            font-size: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .poster.story-aspect .glass-venue strong {
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+        }
+
         /* Swipe Down */
         .hero-bottom {
             display: flex;
@@ -506,31 +538,7 @@
         }
 
         .swipe {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            font-size: 1.05rem;
-            font-weight: 800;
-            color: var(--coral-500);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            animation: bounce 2s infinite ease-in-out;
-        }
-
-        .swipe::after {
-            content: "↓";
-            font-size: 2.2rem;
-            line-height: 1;
-        }
-
-        .poster.story-aspect .swipe {
-            font-size: 1.45rem;
-            gap: 12px;
-        }
-
-        .poster.story-aspect .swipe::after {
-            font-size: 3.2rem;
+            display: none;
         }
 
         @keyframes bounce {
@@ -539,8 +547,7 @@
         }
 
         .benefits {
-            background:
-                linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+            background: #ffffff;
         }
 
         .benefits .network-lines {
@@ -555,7 +562,7 @@
         .cta-inner {
             position: relative;
             z-index: 2;
-            padding: 140px 58px 54px;
+            padding: 230px 58px 54px;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -565,13 +572,16 @@
         .poster.story-aspect .benefits-inner,
         .poster.story-aspect .topics-inner,
         .poster.story-aspect .cta-inner {
-            padding: 180px 80px 80px;
+            padding: 270px 80px 80px;
         }
 
         .poster.portrait-aspect .benefits-inner,
-        .poster.portrait-aspect .topics-inner,
+        .poster.portrait-aspect .topics-inner {
+            padding: 250px 68px 68px;
+        }
+
         .poster.portrait-aspect .cta-inner {
-            padding: 160px 68px 68px;
+            padding: 250px 68px 180px;
         }
 
         .cta-inner {
@@ -640,100 +650,131 @@
 
         .benefit-item {
             display: grid;
-            grid-template-columns: 60px 1fr;
-            gap: 16px;
+            grid-template-columns: 72px 1fr;
+            gap: 18px;
             align-items: start;
+            background: #fff;
+            border: 1.5px solid var(--border-mid);
+            border-radius: 24px;
+            padding: 28px 28px;
+            box-shadow: 0 12px 32px rgba(18, 31, 63, 0.1);
+            transition: transform 150ms ease, box-shadow 150ms ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(18, 31, 63, 0.12);
         }
 
         .icon-circle {
-            width: 54px;
-            height: 54px;
+            width: 72px;
+            height: 72px;
             border-radius: 50%;
             display: grid;
             place-items: center;
-            color: var(--navy-800);
-            border: 2px solid rgba(16, 57, 125, 0.2);
-            background: rgba(16, 57, 125, 0.04);
-            font-size: 1.1rem;
+            color: var(--coral-500);
+            border: 2.5px solid rgba(122, 182, 72, 0.4);
+            background: var(--green-bg-light);
+            font-size: 1.8rem;
             font-weight: 900;
+            flex-shrink: 0;
         }
 
         .benefit-item strong {
             display: block;
             color: var(--navy-900);
-            font-size: 1.2rem;
+            font-size: 1.35rem;
             font-weight: 900;
             text-transform: uppercase;
+            line-height: 1.2;
         }
 
         .benefit-item span {
             display: block;
-            margin-top: 4px;
-            color: rgba(21, 37, 79, 0.8);
-            font-size: 1.1rem;
-            line-height: 1.35;
+            margin-top: 8px;
+            color: rgba(21, 37, 79, 0.75);
+            font-size: 1.15rem;
+            line-height: 1.4;
         }
 
         /* --- STORY: Beneficios --- */
         .poster.story-aspect .benefit-list {
-            gap: 48px;
+            gap: 56px;
         }
 
         .poster.story-aspect .benefit-item {
-            grid-template-columns: 96px 1fr;
-            gap: 32px;
+            grid-template-columns: 110px 1fr;
+            gap: 36px;
+            padding: 36px 36px;
+            border-radius: 32px;
         }
 
         .poster.story-aspect .benefit-item strong {
-            font-size: 2rem;
+            font-size: 2.1rem;
+            line-height: 1.25;
         }
 
         .poster.story-aspect .benefit-item span {
-            font-size: 1.8rem;
-            line-height: 1.4;
-            margin-top: 10px;
+            font-size: 1.9rem;
+            line-height: 1.45;
+            margin-top: 12px;
         }
 
         .poster.story-aspect .icon-circle {
-            width: 86px;
-            height: 86px;
-            font-size: 1.8rem;
+            width: 110px;
+            height: 110px;
+            font-size: 2.2rem;
         }
 
         .poster.story-aspect .bottom-mark {
-            font-size: 1.8rem;
-            bottom: 48px;
+            font-size: 1.3rem;
+            min-height: 140px;
+            padding: 30px 60px;
         }
 
         .bottom-mark {
             position: absolute;
             left: 0;
             right: 0;
-            bottom: 24px;
+            bottom: 0;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            padding: 20px 40px;
+            background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(8,38,95,0.05) 100%);
             color: var(--navy-900);
-            font-weight: 900;
-            font-size: 1.18rem;
-            opacity: 0.92;
+            font-weight: 700;
+            font-size: 0.95rem;
+            line-height: 1.45;
+            white-space: normal;
         }
 
         .topics {
-            background:
-                radial-gradient(circle at top left, rgba(36, 215, 234, 0.16), transparent 26%),
-                linear-gradient(180deg, #05255d 0%, #03183f 100%);
+            background: #ffffff;
         }
 
         .topics .network-lines {
             inset: 0;
-            mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.85), transparent 92%);
+            mask-image: radial-gradient(circle at 30% 20%, rgba(0, 0, 0, 0.25), transparent 60%);
+        }
+
+        .topics .light-title {
+            color: var(--navy-900);
+            background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy-800) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .topics .eyebrow {
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--navy-800);
         }
 
         .topics-sub {
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(21, 37, 79, 0.78);
             text-transform: uppercase;
             font-weight: 800;
             margin-bottom: 38px;
@@ -750,31 +791,33 @@
         .topic-card {
             display: flex;
             align-items: center;
-            text-align: left;
-            gap: 16px;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            justify-content: center;
+            text-align: center;
+            color: var(--navy-900);
+            background: #fff;
+            border: 1px solid var(--border-mid);
             border-radius: 16px;
-            padding: 12px 18px;
+            padding: 16px 18px;
+            box-shadow: var(--shadow-card);
+            transition: transform 150ms ease, box-shadow 150ms ease;
+        }
+
+        .topic-card:hover {
+            background: #f8fbff;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(18, 31, 63, 0.1);
         }
 
         .topic-card .icon-circle {
-            margin: 0;
-            width: 48px;
-            height: 48px;
-            font-size: 1rem;
-            flex-shrink: 0;
-            color: var(--cyan-300);
-            border-color: rgba(140, 244, 255, 0.35);
-            background: rgba(36, 215, 234, 0.08);
+            display: none;
         }
 
         .topic-card span {
             display: block;
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 800;
-            line-height: 1.25;
+            line-height: 1.3;
+            color: var(--navy-900);
         }
 
         .topic-chip {
@@ -782,7 +825,7 @@
             margin: 0 auto;
             padding: 16px 34px;
             border-radius: 999px;
-            background: linear-gradient(90deg, #1fd5e8, #25eff3);
+            background: var(--gradient-cyan);
             color: var(--navy-900);
             font-weight: 900;
             text-transform: uppercase;
@@ -801,21 +844,17 @@
         }
 
         .poster.story-aspect .topic-card {
-            gap: 20px;
-            padding: 20px 24px;
+            padding: 24px 28px;
             border-radius: 20px;
         }
 
         .poster.story-aspect .topic-card .icon-circle {
-            width: 72px;
-            height: 72px;
-            font-size: 1.4rem;
-            margin-bottom: 0;
+            display: none;
         }
 
         .poster.story-aspect .topic-card span {
-            font-size: 1.35rem;
-            line-height: 1.35;
+            font-size: 1.4rem;
+            line-height: 1.4;
         }
 
         .poster.story-aspect .topic-chip {
@@ -824,12 +863,12 @@
         }
 
         .topics .bottom-mark {
-            color: #fff;
+            color: var(--navy-900);
         }
 
         /* --- EVENTS --- */
         .events {
-            background: linear-gradient(180deg, #f4f7fb 0%, #dde7f4 100%);
+            background: #ffffff;
         }
 
         .events .network-lines {
@@ -838,13 +877,17 @@
         }
 
         .events-inner {
-            padding: 120px 60px 50px;
+            padding: 230px 60px 50px;
             position: relative;
             z-index: 2;
         }
 
+        .poster.portrait-aspect .events-inner {
+            padding: 250px 68px 50px;
+        }
+
         .poster.story-aspect .events-inner {
-            padding: 160px 80px 80px;
+            padding: 270px 80px 80px;
         }
 
         .events-desc {
@@ -870,23 +913,29 @@
             grid-template-columns: 56px 1fr auto;
             gap: 16px;
             background: #fff;
-            border: 1px solid rgba(16, 57, 125, 0.06);
+            border: 1px solid var(--border-mid);
             border-radius: 18px;
             padding: 14px 20px 14px 16px;
-            box-shadow: 0 4px 16px rgba(18, 31, 63, 0.03);
+            box-shadow: var(--shadow-card);
             align-items: center;
+            transition: transform 150ms ease, box-shadow 150ms ease;
+        }
+
+        .event-row:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(18, 31, 63, 0.1);
         }
 
         .event-icon {
             width: 56px;
             height: 56px;
-            border-radius: 14px;
-            background: rgba(122, 182, 72, 0.12);
+            border-radius: 16px;
+            background: var(--green-bg-light);
             color: var(--coral-500);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 900;
         }
 
@@ -958,8 +1007,7 @@
         }
 
         .cta {
-            background:
-                linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+            background: #ffffff;
         }
 
         .cta .network-lines {
@@ -1014,12 +1062,15 @@
         }
 
         .cta-headline {
-            color: var(--navy-900);
             font-size: 4.8rem;
             line-height: 0.98;
             text-transform: uppercase;
             font-weight: 900;
             margin: 24px 0 8px;
+            background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy-800) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .poster.story-aspect .cta-headline {
@@ -1045,11 +1096,11 @@
         }
 
         .deadline-box {
-            background: #fff;
-            border: 2px solid rgba(16, 57, 125, 0.1);
-            border-left: 8px solid var(--coral-500);
+            background: #f0f5fd;
+            border: 2px solid var(--border-mid);
+            border-left: 10px solid var(--coral-500);
             border-radius: 24px;
-            box-shadow: 0 16px 34px rgba(18, 31, 63, 0.08);
+            box-shadow: 0 20px 50px rgba(18, 31, 63, 0.10);
             padding: 32px 42px;
             margin-bottom: 34px;
         }
@@ -1067,7 +1118,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 18px 0;
-            border-bottom: 1px solid rgba(16, 57, 125, 0.1);
+            border-bottom: 1px solid var(--border-light);
         }
 
         .date-row:last-child {
@@ -1086,7 +1137,7 @@
             color: var(--coral-500);
             font-weight: 900;
             text-transform: uppercase;
-            background: rgba(122, 182, 72, 0.12);
+            background: var(--green-bg-light);
             padding: 10px 20px;
             border-radius: 12px;
         }
@@ -1128,14 +1179,20 @@
             gap: 16px;
             align-items: center;
             border-radius: 24px;
-            border: 2px solid rgba(122, 182, 72, 0.5);
-            background: rgba(122, 182, 72, 0.08);
+            border: 2px solid rgba(122, 182, 72, 0.6);
+            background: linear-gradient(135deg, rgba(122, 182, 72, 0.1) 0%, rgba(122, 182, 72, 0.18) 100%);
             padding: 22px 28px;
             color: var(--navy-900);
             font-weight: 900;
             text-transform: uppercase;
             text-decoration: none;
             font-size: 1.5rem;
+            transition: all 150ms ease;
+        }
+
+        .action-box:hover {
+            background: rgba(122, 182, 72, 0.2);
+            transform: translateY(-2px);
         }
 
         .action-box .icon-circle {
@@ -1145,7 +1202,7 @@
             font-size: 1.6rem;
             color: var(--coral-500);
             border-color: rgba(122, 182, 72, 0.4);
-            background: rgba(122, 182, 72, 0.12);
+            background: var(--green-bg-light);
         }
 
         /* --- STORY: Action box & bio chip --- */
@@ -1171,7 +1228,7 @@
             width: fit-content;
             padding: 20px 36px;
             border-radius: 999px;
-            background: linear-gradient(90deg, #1fd5e8, #25eff3);
+            background: var(--gradient-cyan);
             color: var(--navy-900);
             font-weight: 900;
             text-transform: uppercase;
@@ -1193,12 +1250,13 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            background: #fff;
-            border: 2px solid rgba(16, 57, 125, 0.1);
+            background: #f0f5fd;
+            border: 2px solid var(--border-mid);
+            border-left: 4px solid rgba(16, 57, 125, 0.18);
             border-radius: 20px;
             padding: 18px 28px;
             margin-bottom: 28px;
-            box-shadow: 0 8px 24px rgba(18, 31, 63, 0.06);
+            box-shadow: var(--shadow-card);
         }
 
         .springer-badge img {
@@ -1238,34 +1296,6 @@
         .poster.story-aspect .springer-badge-text { font-size: 1.6rem; }
         .poster.story-aspect .springer-badge-text strong { font-size: 1.8rem; }
 
-        .cta-footer {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            min-height: 112px;
-            background: linear-gradient(180deg, #0d2e67 0%, #06183f 100%);
-            color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 58px;
-        }
-
-        .footer-links {
-            font-weight: 700;
-            line-height: 1.45;
-        }
-
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .footer-brand strong {
-            font-size: 1.2rem;
-        }
 
         @media (max-width: 1180px) {
             .app-shell {
@@ -1294,6 +1324,26 @@
             }
 
         }
+
+        #reset-btn {
+            width: 100%;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 10px;
+            background: transparent;
+            color: rgba(21, 37, 79, 0.55);
+            font-size: 0.85rem;
+            font-family: var(--ui-font);
+            cursor: pointer;
+            margin-bottom: 16px;
+            transition: background 150ms ease, color 150ms ease;
+        }
+
+        #reset-btn:hover {
+            background: rgba(16, 57, 125, 0.05);
+            color: var(--navy-900);
+        }
+
     </style>
 </head>
 
@@ -1313,6 +1363,8 @@
             </fieldset>
 
             <div class="note">Edita los campos y cambia entre piezas con las pestañas. Genera los diseños en Vertical (4:5) o Historias (9:16).</div>
+
+            <button id="reset-btn" onclick="localStorage.clear(); location.reload();">↺ Valores por defecto</button>
 
             <div class="tab-row">
                 <button class="tab-button active" data-view="cover">Portada</button>
@@ -1347,6 +1399,10 @@
                 <div class="field">
                     <label for="cover-dates">Fechas</label>
                     <input id="cover-dates" data-target="cover-dates" value="12, 13, 14 Ago 2026">
+                </div>
+                <div class="field">
+                    <label for="cover-venue">Sede</label>
+                    <textarea id="cover-venue" data-target="cover-venue">Escuela Naval Almirante Padilla</textarea>
                 </div>
                 <div class="field">
                     <label for="cover-swipe">Llamado infernal</label>
@@ -1387,7 +1443,7 @@
                 </div>
                 <div class="field">
                     <label for="benefit-3-copy">Texto 3</label>
-                    <input id="benefit-3-copy" data-target="benefit-3-copy" value="Memorias indexadas con revisión por pares ciegos.">
+                    <input id="benefit-3-copy" data-target="benefit-3-copy" value="Memorias indexadas en Springer con revisión por pares.">
                 </div>
             </section>
 
@@ -1544,9 +1600,9 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
                     <input id="cta-bio" data-target="cta-bio" value="Más info en link de la bio">
                 </div>
                 <div class="field">
-                    <label for="cta-footer">Footer izquierdo</label>
-                    <textarea id="cta-footer" data-target="cta-footer">www.sco2.org/20ccc/
-#20CCC   #SCo2</textarea>
+                    <label for="cta-footer">Footer (URL y hashtags)</label>
+                    <textarea id="cta-footer" data-target="cta-footer">www.sco2.org/20ccc
+#20CCC   #SCo2   #Colombia</textarea>
                 </div>
             </section>
         </aside>
@@ -1563,16 +1619,17 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
             <section class="preview-frame active" data-frame="cover">
                 <article class="poster hero portrait-aspect">
                     <div class="top-sco2-strip">
-                        <img src="SCO2.jpg" alt="SCo2">
+                        <img src="sco2.svg" alt="SCo2">
                     </div>
                     <div class="tech-grid"></div>
+                    <div class="network-lines"></div>
                     <div class="poster-content">
                         <!-- Top Sponsors -->
                         <div class="sponsor-ribbon">
                             <span data-bind="cover-sponsor-label">Organizan:</span>
                             <div class="sponsor-logos">
                                 <img src="utb.png" alt="UTB">
-                                <img src="escuela.jpg" alt="Escuela Naval">
+                                <img src="escuela.png" alt="Escuela Naval">
                             </div>
                         </div>
 
@@ -1586,14 +1643,20 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
                             <p class="subheadline" data-bind="cover-subtitle">¡Sé parte del evento de computación más importante de Colombia!</p>
                             
                             <div class="glass-panel">
-                                <div class="glass-item">
-                                    <div class="glass-icon">📍</div>
-                                    <span data-bind="cover-location">Cartagena de Indias</span>
+                                <div style="display: flex; align-items: center; gap: 40px; flex: 1;">
+                                    <div class="glass-item">
+                                        <div class="glass-icon">📍</div>
+                                        <span data-bind="cover-location">Cartagena de Indias</span>
+                                    </div>
+                                    <div class="glass-divider"></div>
+                                    <div class="glass-item">
+                                        <div class="glass-icon">📅</div>
+                                        <span data-bind="cover-dates">12, 13, 14 Ago 2026</span>
+                                    </div>
                                 </div>
-                                <div class="glass-divider"></div>
-                                <div class="glass-item">
-                                    <div class="glass-icon">📅</div>
-                                    <span data-bind="cover-dates">12, 13, 14 Ago 2026</span>
+                                <div class="glass-venue">
+                                    Se realizará en las instalaciones de la
+                                    <strong data-bind="cover-venue" style="display: inline-block; margin-left: 0.25em;">Escuela Naval Almirante Padilla</strong>
                                 </div>
                             </div>
                         </div>
@@ -1619,29 +1682,29 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
                         <div class="eyebrow" data-bind="benefits-eyebrow">Beneficios académicos y profesionales</div>
                         <div class="benefit-list">
                             <div class="benefit-item">
-                                <div class="icon-circle">IC</div>
+                                <div class="icon-circle">💡</div>
                                 <div>
                                     <strong data-bind="benefit-1-title">Intercambio de Conocimiento</strong>
                                     <span data-bind="benefit-1-copy">Aporta al debate académico y formación de talento.</span>
                                 </div>
                             </div>
                             <div class="benefit-item">
-                                <div class="icon-circle">CE</div>
+                                <div class="icon-circle">🤝</div>
                                 <div>
                                     <strong data-bind="benefit-2-title">Conexión Estratégica</strong>
                                     <span data-bind="benefit-2-copy">Interactúa con líderes académicos y de la industria.</span>
                                 </div>
                             </div>
                             <div class="benefit-item">
-                                <div class="icon-circle">PO</div>
+                                <div class="icon-circle">📖</div>
                                 <div>
                                     <strong data-bind="benefit-3-title">Publicación Oficial</strong>
-                                    <span data-bind="benefit-3-copy">Memorias indexadas con revisión por pares ciegos.</span>
+                                    <span data-bind="benefit-3-copy">Memorias indexadas en Springer con revisión por pares.</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="bottom-mark">20CCC'26</div>
+                    <div class="bottom-mark" data-bind="cta-footer">www.sco2.org/20ccc<br>#20CCC   #SCo2   #Colombia</div>
                 </article>
             </section>
 
@@ -1657,41 +1720,33 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
                         <div class="topics-sub" data-bind="topics-eyebrow">Ejes temáticos de investigación</div>
                         <div class="topic-grid">
                             <div class="topic-card">
-                                <div class="icon-circle">IA</div>
                                 <span data-bind="topic-1">Inteligencia Artificial y Datos</span>
                             </div>
                             <div class="topic-card">
-                                <div class="icon-circle">SI</div>
                                 <span data-bind="topic-2">Sistemas Inteligentes</span>
                             </div>
                             <div class="topic-card">
-                                <div class="icon-circle">SD</div>
                                 <span data-bind="topic-3">Software y Transformación</span>
                             </div>
                             <div class="topic-card">
-                                <div class="icon-circle">CS</div>
                                 <span data-bind="topic-4">Seguridad Digital</span>
                             </div>
                             <div class="topic-card">
-                                <div class="icon-circle">RB</div>
                                 <span data-bind="topic-5">Robótica e Interacción</span>
                             </div>
                             <div class="topic-card">
-                                <div class="icon-circle">TI</div>
                                 <span data-bind="topic-6">Tecnologías Inmersivas</span>
                             </div>
                             <div class="topic-card">
-                                <div class="icon-circle">HC</div>
                                 <span data-bind="topic-7">Interacción y Accesibilidad</span>
                             </div>
                             <div class="topic-card">
-                                <div class="icon-circle">ED</div>
                                 <span data-bind="topic-8">Educación Computacional</span>
                             </div>
                         </div>
                         <div class="topic-chip" data-bind="topic-chip">Envía tu contribución</div>
                     </div>
-                    <div class="bottom-mark">20CCC'26</div>
+                    <div class="bottom-mark" data-bind="cta-footer">www.sco2.org/20ccc<br>#20CCC   #SCo2   #Colombia</div>
                 </article>
             </section>
 
@@ -1709,7 +1764,7 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
                         <p class="events-desc" data-bind="events-desc">Envía tu artículo de investigación al 20CCC’26. Los mejores trabajos serán evaluados por pares y publicados en las memorias oficiales indexadas del congreso.</p>
                         <div class="event-list">
                             <div class="event-row">
-                                <div class="event-icon">AL</div>
+                                <div class="event-icon">📄</div>
                                 <div class="event-copy">
                                     <strong data-bind="event-1-title">Artículos Largos</strong>
                                     <span data-bind="event-1-copy">Llamado principal de investigación.</span>
@@ -1719,7 +1774,7 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
                                 </div>
                             </div>
                             <div class="event-row">
-                                <div class="event-icon">DS</div>
+                                <div class="event-icon">🖥️</div>
                                 <div class="event-copy">
                                     <strong data-bind="event-2-title">Demos de Software</strong>
                                     <span data-bind="event-2-copy">Presentación de prototipos funcionales.</span>
@@ -1729,7 +1784,7 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
                                 </div>
                             </div>
                             <div class="event-row">
-                                <div class="event-icon">SM</div>
+                                <div class="event-icon">🎓</div>
                                 <div class="event-copy">
                                     <strong data-bind="event-3-title">Simposio SMD2026</strong>
                                     <span data-bind="event-3-copy">Investigación para maestría y doctorado.</span>
@@ -1739,7 +1794,7 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
                                 </div>
                             </div>
                             <div class="event-row">
-                                <div class="event-icon">RW</div>
+                                <div class="event-icon">⚙️</div>
                                 <div class="event-copy">
                                     <strong data-bind="event-4-title">Retos y Workshops</strong>
                                     <span data-bind="event-4-copy">Colaboración métrica sobre problemas.</span>
@@ -1749,7 +1804,7 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
                                 </div>
                             </div>
                             <div class="event-row">
-                                <div class="event-icon">MC</div>
+                                <div class="event-icon">👩‍💻</div>
                                 <div class="event-copy">
                                     <strong data-bind="event-5-title">Workshop II MCC</strong>
                                     <span data-bind="event-5-copy">Mujeres en Computación en Colombia.</span>
@@ -1760,7 +1815,7 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
                             </div>
                         </div>
                     </div>
-                    <div class="bottom-mark">20CCC'26</div>
+                    <div class="bottom-mark" data-bind="cta-footer">www.sco2.org/20ccc<br>#20CCC   #SCo2   #Colombia</div>
                 </article>
             </section>
 
@@ -1794,12 +1849,6 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
                             </div>
                         </div>
                         <div class="bio-chip" data-bind="cta-bio">Más info en link de la bio</div>
-                    </div>
-                    <div class="cta-footer">
-                        <div class="footer-links" data-bind="cta-footer">www.scc2.org/20ccc/<br>#20CCC #5Co2</div>
-                        <div class="footer-brand">
-                            <strong>20CCC 2026</strong>
-                        </div>
                     </div>
                 </article>
             </section>
@@ -1899,7 +1948,12 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
         });
 
         inputs.forEach((input) => {
-            const sync = () => updateBoundText(input.dataset.target, input.value);
+            const saved = localStorage.getItem('ccc_' + input.dataset.target);
+            if (saved !== null) input.value = saved;
+            const sync = () => {
+                updateBoundText(input.dataset.target, input.value);
+                localStorage.setItem('ccc_' + input.dataset.target, input.value);
+            };
             input.addEventListener("input", sync);
             sync();
         });
@@ -1908,7 +1962,11 @@ Simposio de Maestrías y Doctorado: 20 mayo</textarea>
             radio.addEventListener('change', (e) => setFormat(e.target.value));
         });
 
-        window.addEventListener('resize', updatePosterScale);
+        let _resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(_resizeTimer);
+            _resizeTimer = setTimeout(updatePosterScale, 120);
+        });
         setTimeout(updatePosterScale, 50);
     </script>
 </body>

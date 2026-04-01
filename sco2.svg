@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 250" width="100%" height="100%" style="background-color: transparent;">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&amp;display=swap');
+      .logo-text {
+        font-family: 'Montserrat', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+        font-weight: 400;
+        font-size: 40px;
+        fill: #919395;
+        letter-spacing: 4px;
+      }
+    </style>
+  </defs>
+
+  <path d="M 114 70 L 70 70 A 16 16 0 0 0 54 86 L 54 124 A 16 16 0 0 0 70 140 L 86 140 A 16 16 0 0 1 102 156 L 102 194 A 16 16 0 0 1 86 210 L 42 210" 
+        fill="none" stroke="#FBD449" stroke-width="24" stroke-linecap="butt" />
+
+  <path d="M 206 70 L 162 70 A 16 16 0 0 0 146 86 L 146 194 A 16 16 0 0 0 162 210 L 206 210" 
+        fill="none" stroke="#FBD449" stroke-width="24" stroke-linecap="butt" />
+
+  <rect x="238" y="70" width="48" height="140" rx="16" 
+        fill="none" stroke="#0077C0" stroke-width="24" />
+
+  <path d="M 313 40 L 344 40 A 8 8 0 0 1 352 48 L 352 67 A 8 8 0 0 1 344 75 L 328 75 A 8 8 0 0 0 320 83 L 320 102 A 8 8 0 0 0 328 110 L 359 110" 
+        fill="none" stroke="#E32322" stroke-width="14" stroke-linecap="butt" />
+
+  <text x="390" y="125" class="logo-text">SOCIEDAD COLOMBIANA</text>
+  <text x="390" y="180" class="logo-text">DE COMPUTACIÓN</text>
+</svg>
